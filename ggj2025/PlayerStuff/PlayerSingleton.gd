@@ -12,11 +12,12 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	#REMOVE THIS! THIS IS A DEBUG EVENT SO IF THE PLAYER FIRES, WE RUN THE TAKE DAMAGE STUFF 
 	if (event.is_action_pressed("fire1")):
-		runTakeDamageLogic()
+		runTakeDamageLogic(1)
 
 
 #Take damage function 
-func runTakeDamageLogic(): 
+func runTakeDamageLogic(damage: float): 
+	print("Player hit for " + str(damage) + " damage.")
 	movement_player_reference.PlayerDamageChanges()
 	
 #attack 1 stats
