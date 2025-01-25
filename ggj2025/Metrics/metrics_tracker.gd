@@ -7,8 +7,8 @@ var kill_count: int = 0
 func _process(delta: float) -> void:
 	# Increment time_played by the frame's delta time
 	time_played += delta
-	print(get_time_played())
-	print(kill_count)
+	#print(time_played)
+	#print(kill_count)
 
 func get_time_played() -> String:
 	# Convert time to hours, minutes, and seconds
