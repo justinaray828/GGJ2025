@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://forjtqcjpwg6"]
+[gd_scene load_steps=6 format=3 uid="uid://forjtqcjpwg6"]
 
 [ext_resource type="PackedScene" uid="uid://3r5agnoea7hg" path="res://Scenes/scene_change.tscn" id="1_1gki6"]
+[ext_resource type="PackedScene" uid="uid://bry0hideui0iv" path="res://TestWorld.tscn" id="3_hg56f"]
 [ext_resource type="FontFile" uid="uid://bdshdx1gxe8dw" path="res://Assets/Fonts/minecraft/Minecraft.ttf" id="3_mrlpb"]
 [ext_resource type="PackedScene" uid="uid://bstndqg60uvnj" path="res://Scenes/volume_slider.tscn" id="4_8sxbi"]
+[ext_resource type="PackedScene" uid="uid://cduhj48lj2na4" path="res://Scenes/main_menu.tscn" id="4_dlssg"]
 
 [node name="pause_menu" type="MarginContainer"]
 anchors_preset = 8
@@ -60,16 +62,20 @@ text = "Paused"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Restart"
+my_scene = ExtResource("3_hg56f")
 
 [node name="Main Menu Button" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Main Menu"
+my_scene = ExtResource("4_dlssg")
 
-[node name="Quit Button" type="Button" parent="MarginContainer/Container/VBoxContainer"]
+[node name="Quit" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Quit"
+my_scene = ExtResource("4_dlssg")
+quit = true
 
 [node name="Master Volume Label" type="Label" parent="MarginContainer/Container/VBoxContainer"]
 layout_mode = 2

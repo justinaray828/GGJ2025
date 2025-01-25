@@ -48,12 +48,10 @@ theme_override_fonts/font = ExtResource("3_t43r3")
 text = "Play"
 my_scene = ExtResource("4_82x3c")
 
-[node name="Quit" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_l17s3")]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_t43r3")
 text = "Quit"
-my_scene = ExtResource("4_82x3c")
-quit = true
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,3 +62,5 @@ horizontal_alignment = 1
 [node name="Master" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_i82ty")]
 layout_mode = 2
 bus_name = "Master"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

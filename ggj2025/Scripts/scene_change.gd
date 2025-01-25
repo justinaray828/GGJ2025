@@ -2,8 +2,10 @@ extends Button
 
 # Export the PackedScene type so it can be set in the inspector
 @export var my_scene : PackedScene
+@export var quit: bool = false
 
-func _ready():
-	if my_scene:
-		var instance = my_scene.instance()
-		add_child(instance)
+func _on_pressed() -> void:
+	if quit:
+		get_tree().quit
+	else:
+		get_tree().change_scene_to_packed(my_scene)
