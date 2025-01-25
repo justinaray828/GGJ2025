@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bry0hideui0iv"]
+[gd_scene load_steps=10 format=4 uid="uid://bry0hideui0iv"]
 
 [ext_resource type="PackedScene" uid="uid://dxhfs1fww6xli" path="res://PlayerStuff/base_player.tscn" id="1_v45iu"]
 [ext_resource type="PackedScene" uid="uid://dp4p7mh2a7uoy" path="res://EnemyStuff/enemy.tscn" id="2_wq8j1"]
 [ext_resource type="PackedScene" uid="uid://diedbeufg01k6" path="res://SpawnerStuff/spawner.tscn" id="3_5n78j"]
 [ext_resource type="PackedScene" uid="uid://forjtqcjpwg6" path="res://Scenes/pause_menu.tscn" id="4_br7wv"]
 [ext_resource type="Texture2D" uid="uid://dbifn4m0whwwi" path="res://PlayerStuff/playerart/tile_floor_3.png" id="4_tmbxl"]
+[ext_resource type="PackedScene" uid="uid://cult8cpu1m1l6" path="res://Metrics/metrics_tracker.tscn" id="6_yrvid"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nayjl"]
 
@@ -44,13 +45,16 @@ tile_set = SubResource("TileSet_um0ov")
 
 [node name="BasePlayer" parent="." instance=ExtResource("1_v45iu")]
 
-[node name="Spawner" parent="." node_paths=PackedStringArray("base_player") instance=ExtResource("3_5n78j")]
+[node name="Spawner" parent="." node_paths=PackedStringArray("base_player", "metrics_tracker") instance=ExtResource("3_5n78j")]
 position = Vector2(590, 321)
 node_to_spawn = ExtResource("2_wq8j1")
 base_player = NodePath("../BasePlayer")
+metrics_tracker = NodePath("../MetricsTracker")
 
 [node name="pause_menu" parent="." instance=ExtResource("4_br7wv")]
 offset_left = 549.5
 offset_top = 217.0
 offset_right = 692.5
 offset_bottom = 435.0
+
+[node name="MetricsTracker" parent="." instance=ExtResource("6_yrvid")]
