@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://forjtqcjpwg6"]
+
+[ext_resource type="PackedScene" uid="uid://3r5agnoea7hg" path="res://Scenes/scene_change.tscn" id="1_1gki6"]
+[ext_resource type="FontFile" uid="uid://bdshdx1gxe8dw" path="res://Assets/Fonts/minecraft/Minecraft.ttf" id="3_mrlpb"]
+[ext_resource type="PackedScene" uid="uid://bstndqg60uvnj" path="res://Scenes/volume_slider.tscn" id="4_8sxbi"]
+
+[node name="pause_menu" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -109.0
+offset_right = 66.5
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.16587, 0.227306, 0.173362, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.316724, 0.415571, 0.328324, 1)
+
+[node name="Container" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Pause Label" type="Label" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mrlpb")
+theme_override_font_sizes/font_size = 31
+text = "Paused"
+
+[node name="Restart Button" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mrlpb")
+text = "Restart"
+
+[node name="Main Menu Button" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mrlpb")
+text = "Main Menu"
+
+[node name="Quit Button" type="Button" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mrlpb")
+text = "Quit"
+
+[node name="Master Volume Label" type="Label" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_mrlpb")
+text = "Master Volume"
+
+[node name="Master" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("4_8sxbi")]
+layout_mode = 2
+bus_name = "Master"
