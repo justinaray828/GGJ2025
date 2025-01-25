@@ -11,25 +11,17 @@ var upgrade_1: String
 var upgrade_2: String
 var upgrade_3: String
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_choice_1_pressed() -> void:
-	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_1))
+	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_1])
 	hide()
 	
 func _on_choice_2_pressed() -> void:
-	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_2))
-	hide() # Replace with function body.
+	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_2])
+	hide()
 
 func _on_choice_3_pressed() -> void:
-	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_3))
-	hide() # Replace with function body.
+	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_3])
+	hide()
 
 func unhide() -> void:
 	shuffle()

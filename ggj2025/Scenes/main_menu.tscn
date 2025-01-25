@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cduhj48lj2na4"]
+[gd_scene load_steps=5 format=3 uid="uid://cduhj48lj2na4"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_eml65"]
 [ext_resource type="PackedScene" uid="uid://bstndqg60uvnj" path="res://Scenes/volume_slider.tscn" id="2_i82ty"]
 [ext_resource type="PackedScene" uid="uid://3r5agnoea7hg" path="res://Scenes/scene_change.tscn" id="3_l17s3"]
 [ext_resource type="FontFile" uid="uid://bdshdx1gxe8dw" path="res://Assets/Fonts/minecraft/Minecraft.ttf" id="3_t43r3"]
-[ext_resource type="PackedScene" uid="uid://dinqlk7ui21qo" path="res://Scenes/upgrade_menu.tscn" id="5_sku08"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -63,8 +62,3 @@ horizontal_alignment = 1
 [node name="Master" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_i82ty")]
 layout_mode = 2
 bus_name = "Master"
-
-[node name="upgrade_menu" parent="." instance=ExtResource("5_sku08")]
-layout_mode = 1
-offset_left = -79.0
-offset_right = 79.0
