@@ -2,7 +2,7 @@ extends Area2D
 
 var speed = 750
 var damage = 0 
-
+var myhealth = 1
 @export var mainattackaudio: PackedScene = null
 @export var popsound1: AudioStream  = null
 @export var popsound2: AudioStream = null
@@ -36,9 +36,8 @@ func _on_movement_timer_timeout() -> void:
 	pass # Replace with function body.
 
 
-func _on_body_entered(body: Node2D) -> void:
-	print(body.name)
-	print(body.get_groups())
+func _on_body_entered(body: Node2D) -> void:	
+	myhealth -= 1
 	if(body.name == "MainPlayerController"):
 		pass
 	elif(body.is_in_group("Enemy")):
@@ -60,5 +59,6 @@ func _on_body_entered(body: Node2D) -> void:
 				mypopsound.stream = popsound6
 		get_parent().add_child(mypopsound)
 		mypopsound.play()
-		queue_free()
+		if(myhealth <= 0):
+			queue_free()
 	pass # Replace with function body.

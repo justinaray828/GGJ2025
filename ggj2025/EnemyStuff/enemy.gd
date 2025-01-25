@@ -7,7 +7,7 @@ class_name Enemy
 @export var attack_cooldown: float = 2
 @export var projectile: PackedScene
 @export var damage: float = 1
-@export var health: int = 2 
+@export var health: float  = 2 
 
 var base_player: Node2D
 var player: Node2D
