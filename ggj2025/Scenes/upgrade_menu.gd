@@ -7,27 +7,40 @@ var upgrades: Dictionary = {
 	4: "Bubble Turret"
 	}
 	
-var upgrade_1: String = ""
-var upgrade_2: String = ""
-var upgrade_3: String = ""
+var upgrade_1: String
+var upgrade_2: String
+var upgrade_3: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var upgrade_array = upgrades.keys()
-	upgrade_array.shuffle()
-	$MarginContainer/Container/VBoxContainer/choice_1.text = upgrades[upgrade_array[0]]
-	$MarginContainer/Container/VBoxContainer/choice_2.text = upgrades[upgrade_array[1]]
-	$MarginContainer/Container/VBoxContainer/choice_3.text = upgrades[upgrade_array[2]]
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_choice_1_pressed() -> void:
-	pass
+	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_1))
+	hide()
 	
 func _on_choice_2_pressed() -> void:
-	pass # Replace with function body.
+	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_2))
+	hide() # Replace with function body.
 
 func _on_choice_3_pressed() -> void:
-	pass # Replace with function body.
+	#playerInumerator.commitUpgrade(upgrades.get_key(upgrade_3))
+	hide() # Replace with function body.
+
+func unhide() -> void:
+	shuffle()
+	$MarginContainer/Container/VBoxContainer/choice_1.text = upgrade_1
+	$MarginContainer/Container/VBoxContainer/choice_2.text = upgrade_2
+	$MarginContainer/Container/VBoxContainer/choice_3.text = upgrade_3
+	unhide()
+	
+func shuffle() -> void:
+	var upgrade_array = upgrades.keys()
+	upgrade_array.shuffle()
+	upgrade_1 = upgrades[upgrade_array[0]]
+	upgrade_2 = upgrades[upgrade_array[1]]
+	upgrade_3 = upgrades[upgrade_array[2]]
