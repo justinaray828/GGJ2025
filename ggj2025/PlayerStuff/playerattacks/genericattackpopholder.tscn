@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn8abtdb235i4"]
+
+[ext_resource type="Script" path="res://PlayerStuff/playerattacks/genericattackpopholder.gd" id="1_bkp5e"]
+
+[node name="genericattackpopholder" type="AudioStreamPlayer2D"]
+script = ExtResource("1_bkp5e")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
