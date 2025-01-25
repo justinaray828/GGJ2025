@@ -8,6 +8,7 @@ class_name Enemy
 @export var projectile: PackedScene
 @export var attack_range: float = 20
 @export var damage: float = 1
+var health: int =2 
 
 var base_player: Node2D
 var player: Node2D
@@ -60,3 +61,6 @@ func attack():
 	can_attack = false
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
+
+func takeDamage(damagefromattack: int):
+	pass

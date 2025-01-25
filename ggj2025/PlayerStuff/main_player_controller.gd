@@ -13,5 +13,6 @@ func _physics_process(delta):
 
 #This is for what the player node 
 func PlayerDamageChanges(): 
+	print("Take damage")
 	takedamagesound.DamageSound()
 	#TODO add function for looking at thealth and scaling player 
