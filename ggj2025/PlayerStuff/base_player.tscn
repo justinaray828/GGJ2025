@@ -1,39 +1,121 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=28 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
-[ext_resource type="Script" path="res://PlayerStuff/player_attack_1_manager.gd" id="2_3xlrt"]
-[ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/attack_1_bubble.tscn" id="3_rcuxm"]
+[ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
+[ext_resource type="Texture2D" uid="uid://c14cou8vmm4jt" path="res://PlayerStuff/playerart/Player_Sprite.png" id="2_scu8u"]
+[ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/playerattacks/attack_1_bubble.tscn" id="3_rcuxm"]
+[ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_2_manager.gd" id="4_5klts"]
+[ext_resource type="PackedScene" uid="uid://cn8abtdb235i4" path="res://PlayerStuff/playerattacks/genericattackpopholder.tscn" id="5_8r6ck"]
+[ext_resource type="PackedScene" uid="uid://b5p3bqyfgwwd" path="res://PlayerStuff/playerattacks/attack_2_area.tscn" id="5_ki2r5"]
+[ext_resource type="AudioStream" uid="uid://i2hcxfyp20gm" path="res://PlayerStuff/playerart/attack1sounds/pop_01 v1.0.wav" id="6_hkodo"]
+[ext_resource type="AudioStream" uid="uid://bjq7tdrd35acv" path="res://PlayerStuff/playerart/attack1sounds/pop_02 v1.0.wav" id="7_2uyye"]
+[ext_resource type="AudioStream" uid="uid://ct1q122onm1hs" path="res://PlayerStuff/playerart/attack1sounds/pop_03 v1.0.wav" id="8_toa64"]
+[ext_resource type="AudioStream" uid="uid://qgwimmbhfty0" path="res://PlayerStuff/playerart/attack1sounds/pop_04 v1.0.wav" id="9_7bdpd"]
+[ext_resource type="Script" path="res://PlayerStuff/playertakedamagesound.gd" id="9_tvjvi"]
+[ext_resource type="AudioStream" uid="uid://dih6pdp5gfknh" path="res://PlayerStuff/playerart/attack1sounds/pop_05 v1.0.wav" id="10_i1rnl"]
+[ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
+[ext_resource type="AudioStream" uid="uid://bs10b5563ie53" path="res://PlayerStuff/playerart/attack1sounds/pop_06 v1.0.wav" id="11_25ea6"]
+[ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
+[ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
+[ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
+[ext_resource type="AudioStream" uid="uid://ct0smf1l6gk6m" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_05 v1.0.wav" id="14_v86ey"]
+[ext_resource type="AudioStream" uid="uid://dva30x8w0qv1i" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_06 v1.0.wav" id="15_r3l4o"]
+[ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
+[ext_resource type="AudioStream" uid="uid://335bgqe4sr7e" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_08 v1.0.wav" id="17_050v1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
 radius = 30.0
 
-[sub_resource type="Gradient" id="Gradient_hqxfj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2kr"]
+atlas = ExtResource("2_scu8u")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0wfue"]
-gradient = SubResource("Gradient_hqxfj")
-width = 50
-height = 50
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4l4s"]
+atlas = ExtResource("2_scu8u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlgnj"]
+atlas = ExtResource("2_scu8u")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr3ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4l4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlgnj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BasePlayer" type="Node2D"]
 
-[node name="MainPlayerController" type="CharacterBody2D" parent="." groups=["MainCharacterController"]]
+[node name="MainPlayerController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("takedamagesound") groups=["MainCharacterController"]]
 script = ExtResource("1_kadh1")
+takedamagesound = NodePath("playertakedamagesound")
 
 [node name="PlayerCollisionBox" type="CollisionShape2D" parent="MainPlayerController"]
 shape = SubResource("CircleShape2D_cki36")
 
-[node name="MainPlayerSprite" type="Sprite2D" parent="MainPlayerController"]
-texture = SubResource("GradientTexture2D_0wfue")
+[node name="MainPlayerSprite" type="AnimatedSprite2D" parent="MainPlayerController"]
+rotation = 0.797615
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kr3ba")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
 
 [node name="PlayerAttack1Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("attack1attacktimer")]
 script = ExtResource("2_3xlrt")
 attack1attacktimer = NodePath("Attack1Timer")
 attack1baseobject = ExtResource("3_rcuxm")
+mainattackaudio = ExtResource("5_8r6ck")
+popsound1 = ExtResource("6_hkodo")
+popsound2 = ExtResource("7_2uyye")
+popsound3 = ExtResource("8_toa64")
+popsound4 = ExtResource("9_7bdpd")
+popsound5 = ExtResource("10_i1rnl")
+popsound6 = ExtResource("11_25ea6")
 
 [node name="Attack1Timer" type="Timer" parent="MainPlayerController/PlayerAttack1Manager" groups=["MainCharacterController"]]
 wait_time = 0.35
 one_shot = true
 autostart = true
+
+[node name="PlayerAttack2Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("mycooldowntimer")]
+script = ExtResource("4_5klts")
+mycooldowntimer = NodePath("PlayerAttack2CooldownTimer")
+attack2scene = ExtResource("5_ki2r5")
+
+[node name="PlayerAttack2CooldownTimer" type="Timer" parent="MainPlayerController/PlayerAttack2Manager"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="PlayerMovementAnimator" type="AnimationPlayer" parent="MainPlayerController"]
+
+[node name="Camera2D" type="Camera2D" parent="MainPlayerController"]
+
+[node name="PlayerAudioListener" type="AudioListener2D" parent="MainPlayerController/Camera2D"]
+current = true
+
+[node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
+script = ExtResource("9_tvjvi")
+damsound1 = ExtResource("10_y6bw6")
+damsound2 = ExtResource("11_wvxc7")
+damsound3 = ExtResource("12_we4il")
+damsound4 = ExtResource("13_wqpb1")
+damsound5 = ExtResource("14_v86ey")
+damsound6 = ExtResource("15_r3l4o")
+damsound7 = ExtResource("16_kpu86")
+damsound8 = ExtResource("17_050v1")
 
 [node name="AttackBubbleHolder" type="Node2D" parent="."]
 

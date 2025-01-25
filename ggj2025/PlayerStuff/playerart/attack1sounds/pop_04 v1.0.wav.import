@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qgwimmbhfty0"
+path="res://.godot/imported/pop_04 v1.0.wav-60c37dd7371b8d4f019a0049e54e6565.sample"
+
+[deps]
+
+source_file="res://PlayerStuff/playerart/attack1sounds/pop_04 v1.0.wav"
+dest_files=["res://.godot/imported/pop_04 v1.0.wav-60c37dd7371b8d4f019a0049e54e6565.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
