@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dva30x8w0qv1i"
+path="res://.godot/imported/player_hit_06 v1.0.wav-ca0a3efeca7b9cef052dcffb21e4a0e2.sample"
+
+[deps]
+
+source_file="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_06 v1.0.wav"
+dest_files=["res://.godot/imported/player_hit_06 v1.0.wav-ca0a3efeca7b9cef052dcffb21e4a0e2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

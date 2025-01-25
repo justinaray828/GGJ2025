@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://bedxfvlvk6d1u"]
+
+[ext_resource type="Script" path="res://PlayerStuff/playerattacks/attack_1_bubble.gd" id="1_cqn5q"]
+[ext_resource type="PackedScene" uid="uid://cn8abtdb235i4" path="res://PlayerStuff/playerattacks/genericattackpopholder.tscn" id="2_tse4j"]
+[ext_resource type="AudioStream" uid="uid://i2hcxfyp20gm" path="res://PlayerStuff/playerart/attack1sounds/pop_01 v1.0.wav" id="3_sq74e"]
+[ext_resource type="AudioStream" uid="uid://bjq7tdrd35acv" path="res://PlayerStuff/playerart/attack1sounds/pop_02 v1.0.wav" id="4_5s5bp"]
+[ext_resource type="AudioStream" uid="uid://ct1q122onm1hs" path="res://PlayerStuff/playerart/attack1sounds/pop_03 v1.0.wav" id="5_l674m"]
+[ext_resource type="AudioStream" uid="uid://qgwimmbhfty0" path="res://PlayerStuff/playerart/attack1sounds/pop_04 v1.0.wav" id="6_6fwv1"]
+[ext_resource type="AudioStream" uid="uid://dih6pdp5gfknh" path="res://PlayerStuff/playerart/attack1sounds/pop_05 v1.0.wav" id="7_kjuub"]
+[ext_resource type="AudioStream" uid="uid://bs10b5563ie53" path="res://PlayerStuff/playerart/attack1sounds/pop_06 v1.0.wav" id="8_5rmki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gny7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r75xa"]
+size = Vector2(16, 16)
+
+[node name="Attack1Bubble" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_cqn5q")
+mainattackaudio = ExtResource("2_tse4j")
+popsound1 = ExtResource("3_sq74e")
+popsound2 = ExtResource("4_5s5bp")
+popsound3 = ExtResource("5_l674m")
+popsound4 = ExtResource("6_6fwv1")
+popsound5 = ExtResource("7_kjuub")
+popsound6 = ExtResource("8_5rmki")
+
+[node name="Attack1Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6gny7")
+
+[node name="BubbleAttackArt" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_r75xa")
+
+[node name="ExistingTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExistingTimer" to="." method="_on_existing_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
