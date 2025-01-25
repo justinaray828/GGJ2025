@@ -7,17 +7,18 @@ class_name Enemy
 @export var attack_cooldown: float = 2
 @export var projectile: PackedScene
 @export var attack_range: float = 20
+@export var damage: float = 1
 
-@export var base_player: Node2D # Temp
+var base_player: Node2D
 var player: Node2D
-var dist_to_player: float
 var can_attack: bool = true
+var player_in_range: bool = false
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
 
 func _process(delta):
-	if can_attack:
+	if can_attack && player_in_range:
 		attack()
 
 func _physics_process(delta):
@@ -37,15 +38,25 @@ func _on_attack_timer_timeout():
 
 func _on_attack_area_body_entered(body):
 	if body == player:
-		can_attack = true # Player entered attack area
-		
+		player_in_range = true # Player entered attack area
 
 func _on_attack_area_body_exited(body):
 	if body == player:
-		can_attack = false # Player left attack area
+		player_in_range = false # Player left attack area
 
 func attack():
-	print("Attack!")
+	# TODO: Play attack anim
+	
+	if projectile:
+		print("Ranged Attack!")
+		# TODO: Instantiate projectile with damage.
+	else:
+		print("Melee Attack!")
+		# TODO: Call player damage method.
+		PlayerSingleton.runTakeDamageLogic(damage)
+	
+	
+	# Start attack cooldown
 	can_attack = false
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
