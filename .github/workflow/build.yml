@@ -2,10 +2,10 @@ name: Build Godot Project
 
 on:
   # all branches
-  # push: {}
-  push:
-    branches:
-      - main
+  push: {}
+  # push:
+    # branches:
+      # - main
   # pull_request: {}
 
 jobs:
