@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var is_on: bool = true
 @export var spawn_area: Rect2 = Rect2(Vector2(-300, -300), Vector2(600, 600))
 @export var spawn_interval: float = 2.0
 @export var node_to_spawn: PackedScene
