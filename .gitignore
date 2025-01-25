@@ -14,3 +14,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Settings file for vscode
+.vscode/
+
+# Env files
+.env
