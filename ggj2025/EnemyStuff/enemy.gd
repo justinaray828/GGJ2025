@@ -6,9 +6,8 @@ class_name Enemy
 @export var speed: float = 150.0
 @export var attack_cooldown: float = 2
 @export var projectile: PackedScene
-@export var attack_range: float = 20
 @export var damage: float = 1
-var health: int =2 
+@export var health: int = 2 
 
 var base_player: Node2D
 var player: Node2D
@@ -26,6 +25,7 @@ func _physics_process(delta):
 	if base_player:
 		player = base_player.get_node("MainPlayerController")
 		if player:
+			look_at(player.global_position)
 			var direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
 			move_and_slide()
@@ -50,10 +50,14 @@ func attack():
 	
 	if projectile:
 		print("Ranged Attack!")
-		# TODO: Instantiate projectile with damage.
+		# Instance the projectile
+		var projectile_instance = projectile.instantiate()
+		projectile_instance.damage = damage
+		projectile_instance.global_position = global_position
+		projectile_instance.global_transform = global_transform
+		get_tree().current_scene.add_child(projectile_instance)
 	else:
 		print("Melee Attack!")
-		# TODO: Call player damage method.
 		PlayerSingleton.runTakeDamageLogic(damage)
 	
 	

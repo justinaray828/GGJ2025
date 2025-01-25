@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp4p7mh2a7uoy"]
+[gd_scene load_steps=7 format=3 uid="uid://dp4p7mh2a7uoy"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_4gnrm"]
+[ext_resource type="PackedScene" uid="uid://yc0o7ut0kww5" path="res://EnemyStuff/Projectiles/enemy_projectile.tscn" id="2_c8xt2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
 radius = 25.02
@@ -14,12 +15,13 @@ width = 50
 height = 50
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7y6m3"]
-radius = 115.156
+radius = 214.002
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_4gnrm")
+projectile = ExtResource("2_c8xt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")
