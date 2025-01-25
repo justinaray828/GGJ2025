@@ -27,11 +27,6 @@ func spawn_object():
 		# Instance the object to spawn
 		var instance = node_to_spawn.instantiate()
 		
-		# Handle enemies
-		if instance is Enemy:
-			instance.base_player = base_player
-			instance.metrics_tracker = metrics_tracker
-		
 		# Generate a random position within the spawn area
 		var random_position = Vector2(
 			randi_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x),
@@ -41,10 +36,21 @@ func spawn_object():
 		# Place the object at the random position
 		instance.position = random_position
 		
+		# Handle enemies
+		if instance is Enemy:
+			instance.base_player = base_player
+			instance.metrics_tracker = metrics_tracker
+			
+			# Increase enemy speed over time
+			instance.speed = instance.speed + (metrics_tracker.time_played / 5)
+			instance.attack_cooldown = instance.attack_cooldown - (metrics_tracker.time_played / 1000)
+			
+			# Increase spawn frequency
+			spawn_interval = spawn_interval - (metrics_tracker.time_played / 2000)
+		
 		# Add the object as a child of the spawner
 		add_child(instance)
 		
-			
 	else:
 		print("No object_to_spawn assigned to the spawner.")
 
