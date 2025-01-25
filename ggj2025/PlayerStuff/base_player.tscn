@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxhfs1fww6xli"]
+
+[ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
+[ext_resource type="Script" path="res://PlayerStuff/player_attack_1_manager.gd" id="2_3xlrt"]
+[ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/attack_1_bubble.tscn" id="3_rcuxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
+radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_hqxfj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0wfue"]
+gradient = SubResource("Gradient_hqxfj")
+width = 50
+height = 50
+
+[node name="BasePlayer" type="Node2D"]
+
+[node name="MainPlayerController" type="CharacterBody2D" parent="." groups=["MainCharacterController"]]
+script = ExtResource("1_kadh1")
+
+[node name="PlayerCollisionBox" type="CollisionShape2D" parent="MainPlayerController"]
+shape = SubResource("CircleShape2D_cki36")
+
+[node name="MainPlayerSprite" type="Sprite2D" parent="MainPlayerController"]
+texture = SubResource("GradientTexture2D_0wfue")
+
+[node name="PlayerAttack1Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("attack1attacktimer")]
+script = ExtResource("2_3xlrt")
+attack1attacktimer = NodePath("Attack1Timer")
+attack1baseobject = ExtResource("3_rcuxm")
+
+[node name="Attack1Timer" type="Timer" parent="MainPlayerController/PlayerAttack1Manager" groups=["MainCharacterController"]]
+wait_time = 0.35
+one_shot = true
+autostart = true
+
+[node name="AttackBubbleHolder" type="Node2D" parent="."]
+
+[connection signal="timeout" from="MainPlayerController/PlayerAttack1Manager/Attack1Timer" to="MainPlayerController/PlayerAttack1Manager" method="_on_attack_1_timer_timeout"]
