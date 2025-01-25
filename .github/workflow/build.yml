@@ -2,10 +2,10 @@ name: Build Godot Project
 
 on:
   # all branches
-  push: {}
-  # push:
-    # branches:
-      # - main
+  push:
+    branches:
+      - main
+      - MG-AutomatedBuilds
   # pull_request: {}
 
 jobs:
@@ -25,6 +25,7 @@ jobs:
           name: WizardBubbles
           preset: ${{ matrix.platform }}
           debugMode: "true"
+          projectDir: "ggj2025"
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
