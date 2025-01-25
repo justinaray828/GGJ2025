@@ -17,20 +17,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func reassignvalues():
-	attack1speed = PlayerSingleton.baseattack1timer 
-	#now for other valuesz1
 
-	pass
 
 func _on_attack_1_timer_timeout() -> void:
 	#Throw out the bubble attack 
 	#Play random sound effect 
-	
-	var myattack = attack1baseobject.instantiate()
-	myattack.damage = PlayerSingleton.baseattack1damage
-	myattack.transform = get_parent().global_transform
-	get_parent().get_parent().add_child(myattack)
-	attack1attacktimer.wait_time = PlayerSingleton.baseattack1timer
-	attack1attacktimer.start()
-	pass # Replace with function body.
+	for i in PlayerSingleton.baseattack1amtfired:
+		var myattack = attack1baseobject.instantiate()
+		myattack.damage = PlayerSingleton.baseattack1damage
+		myattack.transform = get_parent().global_transform
+		myattack.myhealth = PlayerSingleton.baseattack1health
+		var randomx = randf_range(0,30)
+		var randomy = randf_range(0,30)
+		myattack.position += Vector2(randomx, randomy)
+		get_parent().get_parent().add_child(myattack)
+		attack1attacktimer.wait_time = PlayerSingleton.baseattack1timer
+		attack1attacktimer.start()
+		pass # Replace with function body.
