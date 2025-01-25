@@ -1,20 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=21 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
 [ext_resource type="Texture2D" uid="uid://c14cou8vmm4jt" path="res://PlayerStuff/playerart/Player_Sprite.png" id="2_scu8u"]
 [ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/playerattacks/attack_1_bubble.tscn" id="3_rcuxm"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_2_manager.gd" id="4_5klts"]
-[ext_resource type="PackedScene" uid="uid://cn8abtdb235i4" path="res://PlayerStuff/playerattacks/genericattackpopholder.tscn" id="5_8r6ck"]
 [ext_resource type="PackedScene" uid="uid://b5p3bqyfgwwd" path="res://PlayerStuff/playerattacks/attack_2_area.tscn" id="5_ki2r5"]
-[ext_resource type="AudioStream" uid="uid://i2hcxfyp20gm" path="res://PlayerStuff/playerart/attack1sounds/pop_01 v1.0.wav" id="6_hkodo"]
-[ext_resource type="AudioStream" uid="uid://bjq7tdrd35acv" path="res://PlayerStuff/playerart/attack1sounds/pop_02 v1.0.wav" id="7_2uyye"]
-[ext_resource type="AudioStream" uid="uid://ct1q122onm1hs" path="res://PlayerStuff/playerart/attack1sounds/pop_03 v1.0.wav" id="8_toa64"]
-[ext_resource type="AudioStream" uid="uid://qgwimmbhfty0" path="res://PlayerStuff/playerart/attack1sounds/pop_04 v1.0.wav" id="9_7bdpd"]
 [ext_resource type="Script" path="res://PlayerStuff/playertakedamagesound.gd" id="9_tvjvi"]
-[ext_resource type="AudioStream" uid="uid://dih6pdp5gfknh" path="res://PlayerStuff/playerart/attack1sounds/pop_05 v1.0.wav" id="10_i1rnl"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
-[ext_resource type="AudioStream" uid="uid://bs10b5563ie53" path="res://PlayerStuff/playerart/attack1sounds/pop_06 v1.0.wav" id="11_25ea6"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
@@ -76,13 +69,6 @@ frame_progress = 1.0
 script = ExtResource("2_3xlrt")
 attack1attacktimer = NodePath("Attack1Timer")
 attack1baseobject = ExtResource("3_rcuxm")
-mainattackaudio = ExtResource("5_8r6ck")
-popsound1 = ExtResource("6_hkodo")
-popsound2 = ExtResource("7_2uyye")
-popsound3 = ExtResource("8_toa64")
-popsound4 = ExtResource("9_7bdpd")
-popsound5 = ExtResource("10_i1rnl")
-popsound6 = ExtResource("11_25ea6")
 
 [node name="Attack1Timer" type="Timer" parent="MainPlayerController/PlayerAttack1Manager" groups=["MainCharacterController"]]
 wait_time = 0.35
