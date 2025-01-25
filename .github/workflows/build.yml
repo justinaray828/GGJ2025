@@ -11,23 +11,30 @@ on:
 jobs:
   Godot:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        platform: [linux, windows, mac]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Build
-        id: build
-        uses: manleydev/build-godot-action@v1.4.1
+      - name: export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v6.0.0
         with:
-          name: WizardBubbles
-          preset: ${{ matrix.platform }}
-          debugMode: "true"
-          projectDir: "ggj2025"
+          # Defining all the required inputs
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_export_templates.tpz
+          relative_project_path: ./ggj2025
+          relative_export_path: ./ggj2025/builds
+          archive_output: true
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
-          name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          name: WizardBubbleGame
+          path: ${{ steps.export.outputs.archive_directory }}/*
+      # - name: create release
+      #   uses: ncipollo/release-action@v1.14.0
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     generateReleaseNotes: true
+      #     tag: ${{ github.ref_name }}
+      #     artifacts: ${{ steps.export.outputs.archive_directory }}/*
