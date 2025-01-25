@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=29 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
 [ext_resource type="Texture2D" uid="uid://c14cou8vmm4jt" path="res://PlayerStuff/playerart/Player_Sprite.png" id="2_scu8u"]
+[ext_resource type="Texture2D" uid="uid://b6me2de38kry2" path="res://PlayerStuff/playerart/Player_bubble_2.png" id="3_5pbwf"]
 [ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/playerattacks/attack_1_bubble.tscn" id="3_rcuxm"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_2_manager.gd" id="4_5klts"]
+[ext_resource type="Texture2D" uid="uid://vpi0x3gdpted" path="res://PlayerStuff/playerart/New_Player_sprite3.png" id="4_f6f4l"]
 [ext_resource type="PackedScene" uid="uid://b5p3bqyfgwwd" path="res://PlayerStuff/playerattacks/attack_2_area.tscn" id="5_ki2r5"]
 [ext_resource type="Script" path="res://PlayerStuff/playertakedamagesound.gd" id="9_tvjvi"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
@@ -31,6 +33,30 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("2_scu8u")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bilf7"]
+atlas = ExtResource("3_5pbwf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t48tn"]
+atlas = ExtResource("3_5pbwf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_322lb"]
+atlas = ExtResource("3_5pbwf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdcxa"]
+atlas = ExtResource("4_f6f4l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei5m8"]
+atlas = ExtResource("4_f6f4l")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usx5r"]
+atlas = ExtResource("4_f6f4l")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr3ba"]
 animations = [{
 "frames": [{
@@ -45,6 +71,34 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bilf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t48tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_322lb")
+}],
+"loop": true,
+"name": &"type2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdcxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei5m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usx5r")
+}],
+"loop": true,
+"name": &"type3",
 "speed": 5.0
 }]
 
@@ -61,9 +115,9 @@ shape = SubResource("CircleShape2D_cki36")
 rotation = 0.797615
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kr3ba")
-autoplay = "default"
-frame = 2
-frame_progress = 1.0
+animation = &"type3"
+autoplay = "type3"
+frame_progress = 0.992923
 
 [node name="PlayerAttack1Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("attack1attacktimer")]
 script = ExtResource("2_3xlrt")
