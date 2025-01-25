@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cult8cpu1m1l6"]
+
+[ext_resource type="Script" path="res://Metrics/metrics_tracker.gd" id="1_uc7j4"]
+
+[node name="MetricsTracker" type="Node2D"]
+script = ExtResource("1_uc7j4")

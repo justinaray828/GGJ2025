@@ -6,14 +6,14 @@ class_name Enemy
 @export var speed: float = 150.0
 @export var attack_cooldown: float = 2
 @export var projectile: PackedScene
-@export var attack_range: float = 20
 @export var damage: float = 1
-var health: int =2 
+@export var health: float  = 2 
 
 var base_player: Node2D
 var player: Node2D
 var can_attack: bool = true
 var player_in_range: bool = false
+var metrics_tracker: MetricsTracker
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
@@ -26,6 +26,7 @@ func _physics_process(delta):
 	if base_player:
 		player = base_player.get_node("MainPlayerController")
 		if player:
+			look_at(player.global_position)
 			var direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
 			move_and_slide()
@@ -50,10 +51,14 @@ func attack():
 	
 	if projectile:
 		print("Ranged Attack!")
-		# TODO: Instantiate projectile with damage.
+		# Instance the projectile
+		var projectile_instance = projectile.instantiate()
+		projectile_instance.damage = damage
+		projectile_instance.global_position = global_position
+		projectile_instance.global_transform = global_transform
+		get_tree().current_scene.add_child(projectile_instance)
 	else:
 		print("Melee Attack!")
-		# TODO: Call player damage method.
 		PlayerSingleton.runTakeDamageLogic(damage)
 	
 	
@@ -62,5 +67,13 @@ func attack():
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
 
-func takeDamage(damagefromattack: int):
-	pass
+func takeDamage(damage: int):
+	health -= damage
+	
+	if health <= 0:
+		die()
+		
+func die():
+	if metrics_tracker:
+		metrics_tracker.kill_count += 1
+	queue_free()
