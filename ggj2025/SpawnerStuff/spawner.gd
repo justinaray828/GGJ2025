@@ -5,6 +5,7 @@ extends Node2D
 @export var spawn_interval: float = 2.0
 @export var node_to_spawn: PackedScene
 @export var base_player: Node2D # TODO: Check gamemanager for player ref instead.
+@export var metrics_tracker: MetricsTracker
 
 var _time_since_last_spawn: float = 0.0
 
@@ -29,6 +30,7 @@ func spawn_object():
 		# Handle enemies
 		if instance is Enemy:
 			instance.base_player = base_player
+			instance.metrics_tracker = metrics_tracker
 		
 		# Generate a random position within the spawn area
 		var random_position = Vector2(
