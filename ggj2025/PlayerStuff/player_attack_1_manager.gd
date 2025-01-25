@@ -14,7 +14,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_attack_1_timer_timeout() -> void:
 	#Throw out the bubble attack 
 	var myattack = attack1baseobject.instantiate()

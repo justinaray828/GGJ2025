@@ -22,6 +22,7 @@ project/assembly_name="GGJ2025"
 [global_group]
 
 MainCharacterController="This is the main reference to the player position"
+Enemy=""
 
 [input]
 

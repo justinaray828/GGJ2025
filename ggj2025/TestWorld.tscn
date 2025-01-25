@@ -12,3 +12,6 @@
 position = Vector2(590, 321)
 node_to_spawn = ExtResource("2_wq8j1")
 base_player = NodePath("../BasePlayer")
+
+[node name="Enemy" parent="." instance=ExtResource("2_wq8j1")]
+position = Vector2(675, 345)
