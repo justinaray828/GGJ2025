@@ -18,7 +18,8 @@ func _input(event: InputEvent) -> void:
 #Take damage function 
 func runTakeDamageLogic(damage: float): 
 	print("Player hit for " + str(damage) + " damage.")
-	movement_player_reference.PlayerDamageChanges()
+	if movement_player_reference != null:
+		movement_player_reference.PlayerDamageChanges()
 	
 #attack 1 stats
 #NOTE: IF WE ARE CALLING IN UPGRADE MENU - it should reference this script to update values 
