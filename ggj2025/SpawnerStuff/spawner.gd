@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var spawn_area: Rect2 = Rect2(Vector2(-100, -100), Vector2(200, 200))
+@export var spawn_area: Rect2 = Rect2(Vector2(-300, -300), Vector2(600, 600))
 @export var spawn_interval: float = 2.0
-@export var object_to_spawn: PackedScene
+@export var node_to_spawn: PackedScene
+@export var base_player: Node2D # TODO: Check gamemanager for player ref instead.
 
 var _time_since_last_spawn: float = 0.0
 
@@ -10,7 +11,7 @@ func _ready():
 	# Start the process loop
 	set_process(true)
 
-func _process(delta: float):
+func _process(delta):
 	# Update the time since the last spawn
 	_time_since_last_spawn += delta
 
@@ -20,9 +21,13 @@ func _process(delta: float):
 		spawn_object()
 
 func spawn_object():
-	if object_to_spawn:
+	if node_to_spawn:
 		# Instance the object to spawn
-		var instance = object_to_spawn.instantiate()
+		var instance = node_to_spawn.instantiate()
+		
+		# Handle enemies
+		if instance is Enemy:
+			instance.base_player = base_player
 		
 		# Generate a random position within the spawn area
 		var random_position = Vector2(
@@ -35,6 +40,8 @@ func spawn_object():
 		
 		# Add the object as a child of the spawner
 		add_child(instance)
+		
+			
 	else:
 		print("No object_to_spawn assigned to the spawner.")
 
