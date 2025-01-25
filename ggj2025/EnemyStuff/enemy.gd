@@ -66,5 +66,11 @@ func attack():
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
 
-func takeDamage(damagefromattack: int):
-	pass
+func takeDamage(damage: int):
+	health -= damage
+	
+	if health <= 0:
+		die()
+		
+func die():
+	queue_free()
