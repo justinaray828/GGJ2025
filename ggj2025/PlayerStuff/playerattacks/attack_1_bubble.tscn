@@ -8,40 +8,40 @@
 [ext_resource type="AudioStream" uid="uid://qgwimmbhfty0" path="res://PlayerStuff/playerart/attack1sounds/pop_04 v1.0.wav" id="6_6fwv1"]
 [ext_resource type="AudioStream" uid="uid://dih6pdp5gfknh" path="res://PlayerStuff/playerart/attack1sounds/pop_05 v1.0.wav" id="7_kjuub"]
 [ext_resource type="AudioStream" uid="uid://bs10b5563ie53" path="res://PlayerStuff/playerart/attack1sounds/pop_06 v1.0.wav" id="8_5rmki"]
-[ext_resource type="Texture2D" uid="uid://bvh4drf1k7b4w" path="res://PlayerStuff/playerart/Projectile_Bubble.png" id="9_6xc87"]
+[ext_resource type="Texture2D" uid="uid://ba5skqunhp4uy" path="res://PlayerStuff/playerart/Projectile_Bubble_2.png" id="9_becta"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gny7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2o0n7"]
-atlas = ExtResource("9_6xc87")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyjto"]
+atlas = ExtResource("9_becta")
 region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2oaw"]
-atlas = ExtResource("9_6xc87")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f87dq"]
+atlas = ExtResource("9_becta")
 region = Rect2(8, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yflsk"]
-atlas = ExtResource("9_6xc87")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1x5q"]
+atlas = ExtResource("9_becta")
 region = Rect2(16, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qsrt4"]
-atlas = ExtResource("9_6xc87")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxx8e"]
+atlas = ExtResource("9_becta")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlt35"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2o0n7")
+"texture": SubResource("AtlasTexture_iyjto")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f2oaw")
+"texture": SubResource("AtlasTexture_f87dq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yflsk")
+"texture": SubResource("AtlasTexture_v1x5q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qsrt4")
+"texture": SubResource("AtlasTexture_nxx8e")
 }],
 "loop": true,
 "name": &"default",
@@ -68,7 +68,7 @@ position = Vector2(-2.38419e-07, 7.15256e-07)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_qlt35")
 autoplay = "default"
-frame_progress = 0.925745
+frame_progress = 0.0752304
 
 [node name="ExistingTimer" type="Timer" parent="."]
 wait_time = 3.0

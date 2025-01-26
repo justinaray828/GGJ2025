@@ -82,7 +82,7 @@ metrics_tracker = NodePath("../../MetricsTracker")
 upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
 
 [node name="SpawnerUpgrades" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
-spawn_interval = 6.0
+spawn_interval = 4.0
 node_to_spawn = ExtResource("9_lo051")
 base_player = NodePath("../../BasePlayer")
 metrics_tracker = NodePath("../../MetricsTracker")
