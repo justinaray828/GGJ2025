@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/genericattackpopholder.gd" id="1_bkp5e"]
 
 [node name="genericattackpopholder" type="AudioStreamPlayer2D"]
+volume_db = 5.0
 script = ExtResource("1_bkp5e")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

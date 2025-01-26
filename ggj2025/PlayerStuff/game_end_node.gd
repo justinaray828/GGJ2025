@@ -32,8 +32,22 @@ func updateTheText():
 	pass
 
 func get_time_played() -> String:
-	# Convert time to hours, minutes, and seconds
+	# Convert time to hours, minutes, and secondssa
 	var hours = int(time_played) / 3600
 	var minutes = (int(time_played) % 3600) / 60
 	var seconds = int(time_played) % 60
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+
+
+func _on_gobacktomainmenu_pressed() -> void:
+	get_tree().paused = false
+	PlayerSingleton.resetAll()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	pass # Replace with function body.
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	PlayerSingleton.resetAll()
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

@@ -11,9 +11,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("fire2")):
+	if(Input.is_action_just_pressed("fire2") or Input.is_action_just_pressed("fire1")):
 		#see if we can run attack 2. NEED AN AND STATEMENT IN THIS IF!
-		#NEED TO CHECK IF WE HAVE THE RESOURCES TO MAKE THIS ATTACK!!!! 
+		#NEED TO CHECK IF WE HAVE THE RESOURCES TO MAKE THIS ATTACK!!!
+		#TODO: REMOVE HEALTH! 
 		if(mycooldowntimer.is_stopped()):
 			#run attack 2 code 
 			var myattack = attack2scene.instantiate()

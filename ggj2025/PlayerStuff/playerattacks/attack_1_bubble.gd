@@ -40,6 +40,8 @@ func _on_body_entered(body: Node2D) -> void:
 	myhealth -= 1
 	if(body.name == "MainPlayerController"):
 		pass
+	if(body.name == "attack2area"):
+		print("VISIBLE FROM BUBBLE 1")
 	elif(body.is_in_group("Enemy")):
 		body.takeDamage(damage)
 		var playthissound = randi_range(1,6)
