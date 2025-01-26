@@ -7,7 +7,7 @@ extends Button
 
 func _on_pressed() -> void:
 	if quit:
-		get_tree().quit
+		get_tree().quit()
 	if game_scene:
 		get_tree().change_scene_to_file("res://TestWorld.tscn")
 	if main_menu:
