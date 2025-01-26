@@ -45,6 +45,7 @@ MainCharacterController="This is the main reference to the player position"
 Enemy=""
 MetricsTracker=""
 attack1group=""
+ProgressBarBomb=""
 
 [input]
 

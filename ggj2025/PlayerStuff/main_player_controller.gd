@@ -4,7 +4,8 @@ var speed = 400  # move speed in pixels/sec
 @export var takedamagesound: AudioStreamPlayer2D = null
 @export var myanimator: AnimationPlayer = null
 @export var mysprite: AnimatedSprite2D = null
-@onready var health_bar: HBoxContainer = %HealthBar
+#@onready var health_bar: HBoxContainer = %HealthBar
+@export var health_bar: HBoxContainer = null
 @onready var playerdiesound: AudioStreamPlayer2D = $playerdiesound
 
 func _ready():
