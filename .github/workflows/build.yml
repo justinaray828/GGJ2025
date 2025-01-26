@@ -1,13 +1,12 @@
 name: Build Godot Project
 
 on:
-  # all branches
   push:
     branches:
       - main
       - MG-AutomatedBuilds
-  # pull_request: {}
-
+env:
+  GAME_NAME: WizardBubble
 jobs:
   Godot:
     runs-on: ubuntu-24.04
@@ -22,14 +21,14 @@ jobs:
         id: build
         uses: felix-schindler/build-godot-action@v2.0.0
         with:
-          name: WizardBubble
+          name: ${{ env.GAME_NAME }}
           preset: ${{ matrix.platform }}
           debugMode: "true"
           projectDir: "./ggj2025"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
-          name: Client - ${{ matrix.platform }}
+          name: ${{ env.GAME_NAME }} - ${{ matrix.platform }}
           path: ggj2025/builds
 
       # - name: create release
