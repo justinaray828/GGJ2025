@@ -5,7 +5,7 @@
 # Godot-specific ignores
 .import/
 export.cfg
-export_presets.cfg
+# export_presets.cfg # Necessary for github actions workflow
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -20,3 +20,6 @@ mono_crash.*.json
 
 # Env files
 .env
+
+# Build files
+# build/*
