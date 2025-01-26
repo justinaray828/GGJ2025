@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://yc0o7ut0kww5"]
 
 [ext_resource type="Script" path="res://EnemyStuff/Projectiles/enemy_projectile.gd" id="1_vu4wr"]
+[ext_resource type="Texture2D" uid="uid://c6dcltoawo0y7" path="res://EnemyStuff/Assets/demon_spear_projectile.png" id="2_fhype"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_flff7"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_i8d6r"]
 
 [node name="EnemyProjectile" type="Area2D"]
 script = ExtResource("1_vu4wr")
@@ -14,8 +13,9 @@ shape = SubResource("CircleShape2D_flff7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
-scale = Vector2(16.1719, 16.1641)
-texture = SubResource("CanvasTexture_i8d6r")
+rotation = 0.785398
+scale = Vector2(3, 3)
+texture = ExtResource("2_fhype")
 
 [node name="ExistingTimer" type="Timer" parent="."]
 wait_time = 3.0

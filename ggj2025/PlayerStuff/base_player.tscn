@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=40 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]

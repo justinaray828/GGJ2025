@@ -39,6 +39,11 @@ func spawn_object():
 		
 		# Handle enemies
 		if instance.is_in_group("Enemy"):
+			
+			# Skip if enemy count exceeds limit
+			if metrics_tracker.enemies_alive > 30:
+				return
+			
 			instance.base_player = base_player
 			instance.metrics_tracker = metrics_tracker
 			instance.upgrade_menu = upgrade_menu

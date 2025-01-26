@@ -21,6 +21,7 @@ var upgrade_menu: UpgradeMenu
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
+	metrics_tracker.enemies_alive += 1
 
 func _process(delta):
 	if can_attack && player_in_range:
@@ -65,6 +66,9 @@ func attack():
 		projectile_instance.damage = damage
 		projectile_instance.global_position = global_position
 		projectile_instance.global_transform = attack_area.global_transform
+		var projectile_sprite = projectile_instance.find_child("Sprite2D")
+		if projectile_sprite:
+				projectile_instance.look_at(player.global_position)
 		get_tree().current_scene.add_child(projectile_instance)
 	else:
 		print("Melee Attack!")
@@ -86,5 +90,5 @@ func takeDamage(damage: int):
 func die():
 	if metrics_tracker:
 		metrics_tracker.kill_count += 1
-	#upgrade_menu.unhide()
+	metrics_tracker.enemies_alive -= 1
 	queue_free()
