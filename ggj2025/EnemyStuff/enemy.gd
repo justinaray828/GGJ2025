@@ -17,6 +17,7 @@ var player: Node2D
 var can_attack: bool = true
 var player_in_range: bool = false
 var metrics_tracker: MetricsTracker
+var upgrade_menu: UpgradeMenu
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
@@ -85,4 +86,5 @@ func takeDamage(damage: int):
 func die():
 	if metrics_tracker:
 		metrics_tracker.kill_count += 1
+	#upgrade_menu.unhide()
 	queue_free()

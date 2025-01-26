@@ -1,10 +1,13 @@
 extends MarginContainer
+class_name UpgradeMenu
 
 var upgrades: Dictionary = {
 	1: "Movement Speed",
-	2: "Bubble Frequency",
-	3: "Bubble Shotgun",
-	4: "Bubble Turret"
+	2: "Bubble Bullet Frequency",
+	3: "Bubble Bullet Damage",
+	4: "Bubble Bomb Size",
+	5: "Bubble Bullet Size",
+	6: "Bubble Bullet Speed"
 	}
 	
 var upgrade_1: String
@@ -12,15 +15,18 @@ var upgrade_2: String
 var upgrade_3: String
 
 func _on_choice_1_pressed() -> void:
-	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_1])
+	PlayerSingleton.commitUpgrade(upgrades.find_key(upgrade_1))
+	get_tree().paused = false
 	hide()
 	
 func _on_choice_2_pressed() -> void:
-	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_2])
+	PlayerSingleton.commitUpgrade(upgrades.find_key(upgrade_2))
+	get_tree().paused = false
 	hide()
 
 func _on_choice_3_pressed() -> void:
-	PlayerSingleton.commitUpgrade(upgrades.get_key[upgrade_3])
+	PlayerSingleton.commitUpgrade(upgrades.find_key(upgrade_3))
+	get_tree().paused = false
 	hide()
 
 func unhide() -> void:
@@ -28,7 +34,9 @@ func unhide() -> void:
 	$MarginContainer/Container/VBoxContainer/choice_1.text = upgrade_1
 	$MarginContainer/Container/VBoxContainer/choice_2.text = upgrade_2
 	$MarginContainer/Container/VBoxContainer/choice_3.text = upgrade_3
-	unhide()
+	#unhide()
+	visible = true
+	get_tree().paused = true
 	
 func shuffle() -> void:
 	var upgrade_array = upgrades.keys()
