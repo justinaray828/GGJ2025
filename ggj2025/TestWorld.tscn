@@ -121,7 +121,7 @@ metricstracker = NodePath("../MetricsTracker")
 
 [node name="layer1" type="AudioStreamPlayer" parent="MusicHolder"]
 stream = ExtResource("8_e7jkc")
-volume_db = -80.0
+volume_db = -5.0
 autoplay = true
 parameters/looping = true
 

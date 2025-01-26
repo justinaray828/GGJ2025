@@ -389,6 +389,7 @@ offset_right = -458.0
 offset_bottom = -291.0
 
 [node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
+volume_db = 15.0
 script = ExtResource("9_tvjvi")
 damsound1 = ExtResource("10_y6bw6")
 damsound2 = ExtResource("11_wvxc7")
