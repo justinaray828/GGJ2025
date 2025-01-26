@@ -57,6 +57,8 @@ visible = false
 offset_left = -71.5
 offset_right = 71.5
 
+[node name="MetricsTracker" parent="." groups=["MetricsTracker"] instance=ExtResource("6_yrvid")]
+ b =======
 [node name="MetricsTracker" parent="." instance=ExtResource("6_yrvid")]
 
 [node name="upgrade_menu" parent="." instance=ExtResource("7_xe6gn")]

@@ -3,6 +3,7 @@ extends Node
 var movement_player_reference: CharacterBody2D = null
 
 #random number, we can change the health 
+#if this number goes to 0, pause the game, run player death anim, show score 
 var health: int = 7
 
 func _process(delta: float) -> void:
@@ -17,9 +18,13 @@ func _input(event: InputEvent) -> void:
 func runTakeDamageLogic(damage: float): 
 	if(movement_player_reference == null):
 		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
-	print("Player hit for " + str(damage) + " damage.")
 	if movement_player_reference != null:
-		movement_player_reference.PlayerDamageChanges()
+		health = health-1
+		if(health>0):
+			movement_player_reference.PlayerDamageChanges()
+		elif(health <= 0):
+			movement_player_reference.PlayerDeath()
+	
 	
 #attack 1 stats
 #NOTE: IF WE ARE CALLING IN UPGRADE MENU - it should reference this script to update values 

@@ -18,6 +18,9 @@ func PlayerDamageChanges():
 	#TODO add function for looking at thealth and scaling player 
 
 func PlayerDeath():
-	get_tree().paused = true
+	speed=0
 	myanimator.play("playerdeath")
+	await get_tree().create_timer(2).timeout
+	get_tree().paused = true
+
 	#TODO: SHOW DEATH RECAP AND POINTS, GO TO START 

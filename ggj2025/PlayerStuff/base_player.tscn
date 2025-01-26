@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=34 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vpi0x3gdpted" path="res://PlayerStuff/playerart/New_Player_sprite3.png" id="4_f6f4l"]
 [ext_resource type="PackedScene" uid="uid://b5p3bqyfgwwd" path="res://PlayerStuff/playerattacks/attack_2_area.tscn" id="5_ki2r5"]
 [ext_resource type="Script" path="res://PlayerStuff/playertakedamagesound.gd" id="9_tvjvi"]
+[ext_resource type="Script" path="res://PlayerStuff/game_end_node.gd" id="10_le3mg"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
@@ -128,6 +129,54 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playertakedamagesound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("playertakedamagesound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/GameEndNode:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasLayer/GameEndNode:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7m727"]
 resource_name = "playerdeath"
@@ -154,6 +203,108 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playertakedamagesound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_wqpb1")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("playertakedamagesound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.006),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CanvasLayer/GameEndNode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"updateTheText"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CanvasLayer/GameEndNode:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CanvasLayer/GameEndNode:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kfb20"]
+resource_name = "playertakedamage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPlayerSprite:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.907543, 0, 0.210512, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("playertakedamagesound:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_wqpb1")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("playertakedamagesound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_kfb20"]
@@ -227,17 +378,52 @@ libraries = {
 [node name="PlayerAudioListener" type="AudioListener2D" parent="MainPlayerController/Camera2D"]
 current = true
 
+[node name="Node" type="Node" parent="MainPlayerController/Camera2D"]
+
 [node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
 script = ExtResource("9_tvjvi")
 damsound1 = ExtResource("10_y6bw6")
 damsound2 = ExtResource("11_wvxc7")
 damsound3 = ExtResource("12_we4il")
-damsound4 = ExtResource("13_wqpb1")
+damsound4 = ExtResource("11_wvxc7")
 damsound5 = ExtResource("14_v86ey")
 damsound6 = ExtResource("15_r3l4o")
 damsound7 = ExtResource("16_kpu86")
 damsound8 = ExtResource("17_050v1")
 
 [node name="AttackBubbleHolder" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(500, 300)
+transform = Transform2D(1, 0, 0, 1, 500, 300)
+
+[node name="GameEndNode" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("gameendlabel")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -469.0
+offset_top = -289.0
+offset_right = 508.0
+offset_bottom = 254.0
+script = ExtResource("10_le3mg")
+gameendlabel = NodePath("GameEndTextLabel")
+
+[node name="GameEndTextLabel" type="RichTextLabel" parent="CanvasLayer/GameEndNode"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 53.0
+offset_right = 950.0
+offset_bottom = 497.0
+bbcode_enabled = true
+text = "After"
+
+[node name="Button" type="Button" parent="CanvasLayer/GameEndNode"]
+process_mode = 3
+layout_mode = 0
+offset_left = 336.0
+offset_top = 410.0
+offset_right = 523.0
+offset_bottom = 441.0
+scale = Vector2(1.82138, 2.3577)
+text = "Go back to main menu!"
 
 [connection signal="timeout" from="MainPlayerController/PlayerAttack1Manager/Attack1Timer" to="MainPlayerController/PlayerAttack1Manager" method="_on_attack_1_timer_timeout"]
