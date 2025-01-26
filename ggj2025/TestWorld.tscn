@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=4 uid="uid://bry0hideui0iv"]
+[gd_scene load_steps=13 format=4 uid="uid://bry0hideui0iv"]
 
 [ext_resource type="PackedScene" uid="uid://dxhfs1fww6xli" path="res://PlayerStuff/base_player.tscn" id="1_v45iu"]
 [ext_resource type="PackedScene" uid="uid://dp4p7mh2a7uoy" path="res://EnemyStuff/enemy.tscn" id="2_wq8j1"]
 [ext_resource type="PackedScene" uid="uid://diedbeufg01k6" path="res://SpawnerStuff/spawner.tscn" id="3_5n78j"]
 [ext_resource type="PackedScene" uid="uid://forjtqcjpwg6" path="res://Scenes/pause_menu.tscn" id="4_br7wv"]
 [ext_resource type="Texture2D" uid="uid://dbifn4m0whwwi" path="res://PlayerStuff/playerart/tile_floor_3.png" id="4_tmbxl"]
+[ext_resource type="Script" path="res://SpawnerStuff/spawner.gd" id="6_hrlv0"]
 [ext_resource type="PackedScene" uid="uid://cult8cpu1m1l6" path="res://Metrics/metrics_tracker.tscn" id="6_yrvid"]
 [ext_resource type="PackedScene" uid="uid://dinqlk7ui21qo" path="res://Scenes/upgrade_menu.tscn" id="7_xe6gn"]
+[ext_resource type="PackedScene" uid="uid://cyjseua18tmq7" path="res://EnemyStuff/enemy_melee_light.tscn" id="9_5t3o1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nayjl"]
 
@@ -46,20 +48,34 @@ tile_set = SubResource("TileSet_um0ov")
 
 [node name="BasePlayer" parent="." instance=ExtResource("1_v45iu")]
 
-[node name="Spawner" parent="." node_paths=PackedStringArray("base_player", "metrics_tracker") instance=ExtResource("3_5n78j")]
-position = Vector2(590, 321)
-node_to_spawn = ExtResource("2_wq8j1")
-base_player = NodePath("../BasePlayer")
-metrics_tracker = NodePath("../MetricsTracker")
-
-[node name="pause_menu" parent="." instance=ExtResource("4_br7wv")]
-visible = false
-offset_left = -71.5
-offset_right = 71.5
-
 [node name="MetricsTracker" parent="." groups=["MetricsTracker"] instance=ExtResource("6_yrvid")]
 
-[node name="upgrade_menu" parent="." instance=ExtResource("7_xe6gn")]
+[node name="Spawners" type="Node2D" parent="."]
+script = ExtResource("6_hrlv0")
+
+[node name="Spawner" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
+position = Vector2(590, 321)
+node_to_spawn = ExtResource("2_wq8j1")
+base_player = NodePath("../../BasePlayer")
+metrics_tracker = NodePath("../../MetricsTracker")
+upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
+
+[node name="Spawner2" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
+node_to_spawn = ExtResource("9_5t3o1")
+base_player = NodePath("../../BasePlayer")
+metrics_tracker = NodePath("../../MetricsTracker")
+upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_br7wv")]
 visible = false
-offset_left = -79.0
-offset_right = 79.0
+offset_left = -51.0
+offset_top = -108.0
+offset_right = 92.0
+offset_bottom = 110.0
+
+[node name="upgrade_menu" parent="CanvasLayer" instance=ExtResource("7_xe6gn")]
+visible = false
+offset_left = -58.0
+offset_right = 100.0

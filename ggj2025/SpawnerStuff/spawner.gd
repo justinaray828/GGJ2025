@@ -6,6 +6,7 @@ extends Node2D
 @export var node_to_spawn: PackedScene
 @export var base_player: Node2D # TODO: Check gamemanager for player ref instead.
 @export var metrics_tracker: MetricsTracker
+@export var upgrade_menu: UpgradeMenu
 
 var _time_since_last_spawn: float = 0.0
 
@@ -37,9 +38,10 @@ func spawn_object():
 		instance.position = random_position
 		
 		# Handle enemies
-		if instance is Enemy:
+		if instance.is_in_group("Enemy"):
 			instance.base_player = base_player
 			instance.metrics_tracker = metrics_tracker
+			instance.upgrade_menu = upgrade_menu
 			
 			# Increase enemy speed over time
 			instance.speed = instance.speed + (metrics_tracker.time_played / 5)
