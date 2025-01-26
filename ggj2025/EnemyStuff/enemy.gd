@@ -13,6 +13,7 @@ class_name Enemy
 @export var projectile: PackedScene
 @export var damage: float = 1
 @export var health: float  = 2 
+@export var mybloodparticles: PackedScene = null
 
 var base_player: Node2D
 var player: Node2D
@@ -102,4 +103,9 @@ func die():
 	if metrics_tracker:
 		metrics_tracker.kill_count += 1
 	metrics_tracker.enemies_alive -= 1
+	var finishparts = mybloodparticles.instantiate()
+	get_parent().add_child(finishparts)
+	finishparts.position = global_position
+	finishparts.emitting  = true
+	call_deferred("free")
 	queue_free()

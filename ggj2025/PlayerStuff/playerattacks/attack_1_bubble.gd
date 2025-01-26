@@ -11,6 +11,8 @@ var myhealth = 1
 @export var popsound5: AudioStream = null
 @export var popsound6: AudioStream = null
 
+@export var finishparticles: PackedScene = null 
+
 #var playerpos = null
 func _ready():
 	#transform = get_parent().global_transform
@@ -40,8 +42,6 @@ func _on_body_entered(body: Node2D) -> void:
 	myhealth -= 1
 	if(body.name == "MainPlayerController"):
 		pass
-	if(body.name == "attack2area"):
-		print("VISIBLE FROM BUBBLE 1")
 	elif(body.is_in_group("Enemy")):
 		body.takeDamage(damage)
 		var playthissound = randi_range(1,6)
@@ -62,5 +62,9 @@ func _on_body_entered(body: Node2D) -> void:
 		get_parent().add_child(mypopsound)
 		mypopsound.play()
 		if(myhealth <= 0):
-			queue_free()
+			var finishparts = finishparticles.instantiate()
+			get_parent().add_child(finishparts)
+			finishparts.position = global_position
+			finishparts.emitting  = true
+			call_deferred("free")
 	pass # Replace with function body.

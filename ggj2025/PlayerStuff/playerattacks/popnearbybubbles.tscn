@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6r1gvx0oupat"]
+[gd_scene load_steps=4 format=3 uid="uid://b6r1gvx0oupat"]
 
 [ext_resource type="Script" path="res://PlayerStuff/popnearbybubbles.gd" id="1_sawhf"]
+[ext_resource type="Texture2D" uid="uid://fxljhv6xl654" path="res://Assets/sprites/shield.png" id="2_a20q7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qxms"]
-radius = 160.0
+radius = 800.0
 
 [node name="popnearbybubbles" type="Area2D" groups=["BubblePopper"]]
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_sawhf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +18,11 @@ shape = SubResource("CircleShape2D_7qxms")
 wait_time = 0.3
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.00001, 2)
+scale = Vector2(22.375, 22)
+texture = ExtResource("2_a20q7")
+
+[connection signal="timeout" from="ExistenceTimer" to="." method="_on_existence_timer_timeout"]

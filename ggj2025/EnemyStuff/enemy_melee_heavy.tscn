@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://btaviye1r5w8r"]
+[gd_scene load_steps=19 format=3 uid="uid://btaviye1r5w8r"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_5uj3v"]
+[ext_resource type="PackedScene" uid="uid://cdble5viyltq5" path="res://EnemyStuff/enemy_death_particles.tscn" id="2_c801d"]
 [ext_resource type="Texture2D" uid="uid://py67wjdghbov" path="res://EnemyStuff/Assets/goblin_sprite_sheet.png" id="2_cgdr1"]
 [ext_resource type="Texture2D" uid="uid://yf71jaisv6u7" path="res://EnemyStuff/Assets/shank.png" id="3_7shcb"]
 
@@ -181,6 +182,7 @@ script = ExtResource("1_5uj3v")
 speed = 130.0
 damage = 3.0
 health = 5.0
+mybloodparticles = ExtResource("2_c801d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")

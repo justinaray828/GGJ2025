@@ -121,30 +121,35 @@ layer5reference = NodePath("layer5")
 metricstracker = NodePath("../MetricsTracker")
 
 [node name="layer1" type="AudioStreamPlayer" parent="MusicHolder"]
+process_mode = 3
 stream = ExtResource("8_e7jkc")
 volume_db = -5.0
 autoplay = true
 parameters/looping = true
 
 [node name="layer2" type="AudioStreamPlayer" parent="MusicHolder"]
+process_mode = 3
 stream = ExtResource("9_btohy")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
 [node name="layer3" type="AudioStreamPlayer" parent="MusicHolder"]
+process_mode = 3
 stream = ExtResource("10_j0cpl")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
 [node name="layer4" type="AudioStreamPlayer" parent="MusicHolder"]
+process_mode = 3
 stream = ExtResource("11_50gjf")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
 [node name="layer5" type="AudioStreamPlayer" parent="MusicHolder"]
+process_mode = 3
 stream = ExtResource("12_bf2q7")
 volume_db = -80.0
 autoplay = true

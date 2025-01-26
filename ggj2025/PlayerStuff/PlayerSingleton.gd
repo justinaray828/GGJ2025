@@ -40,6 +40,8 @@ var baseattack1damage: float = 1
 var baseattack1size: float = 1
 var baseattack1speed: float = 750 
 var baseattack1health: float = 1
+var basebombdamage: float = 1
+var basebomblinger: float = .01
 #attack 2 stats 
 
 func resetAll(): 

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerSingleton="*res://PlayerStuff/PlayerSingleton.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
@@ -39,10 +38,6 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="GGJ2025"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [global_group]
 

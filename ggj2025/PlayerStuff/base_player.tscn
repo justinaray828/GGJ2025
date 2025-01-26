@@ -362,6 +362,7 @@ autostart = true
 [node name="PlayerAttack2Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("mycooldowntimer")]
 script = ExtResource("4_5klts")
 mycooldowntimer = NodePath("PlayerAttack2CooldownTimer")
+timebetweenattacks = 7.0
 attack2scene = ExtResource("5_ki2r5")
 
 [node name="PlayerAttack2CooldownTimer" type="Timer" parent="MainPlayerController/PlayerAttack2Manager"]
@@ -369,12 +370,13 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="PopNearbybubbles" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("mycooldowntimer")]
+[node name="PopNearbybubbles" type="Node2D" parent="MainPlayerController"]
 script = ExtResource("10_cku3f")
-mycooldowntimer = NodePath("PopnearbyTimer")
 Popnearbybubbles = ExtResource("11_mstbu")
 
 [node name="PopnearbyTimer" type="Timer" parent="MainPlayerController/PopNearbybubbles"]
+wait_time = 0.5
+one_shot = true
 
 [node name="PlayerBonusAnimator" type="AnimationPlayer" parent="MainPlayerController"]
 libraries = {

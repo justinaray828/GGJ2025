@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmegfxqwi1jus"]
+
+[ext_resource type="AudioStream" uid="uid://dylxbtakbg5gd" path="res://PlayerStuff/big_pop v1.0.wav" id="1_at8oe"]
+
+[node name="CleanUpBigPopUaudio" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_at8oe")
+volume_db = 5.0
+autoplay = true

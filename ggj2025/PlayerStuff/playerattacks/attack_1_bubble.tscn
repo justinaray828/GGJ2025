@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bedxfvlvk6d1u"]
+[gd_scene load_steps=17 format=3 uid="uid://bedxfvlvk6d1u"]
 
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/attack_1_bubble.gd" id="1_cqn5q"]
 [ext_resource type="PackedScene" uid="uid://cn8abtdb235i4" path="res://PlayerStuff/playerattacks/genericattackpopholder.tscn" id="2_tse4j"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dih6pdp5gfknh" path="res://PlayerStuff/playerart/attack1sounds/pop_05 v1.0.wav" id="7_kjuub"]
 [ext_resource type="AudioStream" uid="uid://bs10b5563ie53" path="res://PlayerStuff/playerart/attack1sounds/pop_06 v1.0.wav" id="8_5rmki"]
 [ext_resource type="Texture2D" uid="uid://ba5skqunhp4uy" path="res://PlayerStuff/playerart/Projectile_Bubble_2.png" id="9_becta"]
+[ext_resource type="PackedScene" uid="uid://clu8k83jnn7r4" path="res://PlayerStuff/bubble_dissapear_sprite.tscn" id="10_c58b0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gny7"]
 
@@ -59,6 +60,7 @@ popsound3 = ExtResource("5_l674m")
 popsound4 = ExtResource("6_6fwv1")
 popsound5 = ExtResource("7_kjuub")
 popsound6 = ExtResource("8_5rmki")
+finishparticles = ExtResource("10_c58b0")
 
 [node name="Attack1Hitbox" type="CollisionShape2D" parent="." groups=["attack1group"]]
 shape = SubResource("CircleShape2D_6gny7")

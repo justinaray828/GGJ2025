@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var mycooldowntimer: Timer = null
-@export var timebetweenattacks:float = .5
+@export var timebetweenattacks:float = 10
 
 @export var attack2scene: PackedScene = null
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("fire2") or Input.is_action_just_pressed("fire1")):
+	if( Input.is_action_just_pressed("fire1")):
 		#see if we can run attack 2. NEED AN AND STATEMENT IN THIS IF!
 		#NEED TO CHECK IF WE HAVE THE RESOURCES TO MAKE THIS ATTACK!!!
 		#TODO: REMOVE HEALTH! 

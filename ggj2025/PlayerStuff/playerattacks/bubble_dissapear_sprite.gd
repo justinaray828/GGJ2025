@@ -1,4 +1,4 @@
-extends Area2D
+extends CPUParticles2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,6 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_existence_timer_timeout() -> void:
-	queue_free()
+func _on_finished() -> void:
+	call_deferred("free")
 	pass # Replace with function body.

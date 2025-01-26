@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://gbc6vcwa0fy3"]
+[gd_scene load_steps=19 format=3 uid="uid://gbc6vcwa0fy3"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_mijyi"]
 [ext_resource type="PackedScene" uid="uid://yc0o7ut0kww5" path="res://EnemyStuff/Projectiles/enemy_projectile.tscn" id="2_ik817"]
 [ext_resource type="Texture2D" uid="uid://bsvp8t55g8ek2" path="res://EnemyStuff/Assets/demon_walking_1.png" id="3_5slty"]
+[ext_resource type="PackedScene" uid="uid://cdble5viyltq5" path="res://EnemyStuff/enemy_death_particles.tscn" id="3_i4kf2"]
 [ext_resource type="Texture2D" uid="uid://yf71jaisv6u7" path="res://EnemyStuff/Assets/shank.png" id="4_xlqpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
@@ -150,6 +151,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_mijyi")
 projectile = ExtResource("2_ik817")
+mybloodparticles = ExtResource("3_i4kf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")
