@@ -56,7 +56,7 @@ func commitUpgrade(identifier: int):
 		3: 
 			baseattack1damage  += 1 
 		4:
-			pass
+			pass # Bubble bomb damage += 1
 		5:
 			baseattack1size += .3
 		6:
