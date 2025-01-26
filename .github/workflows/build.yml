@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [Windows Desktop]
+        platform: [Windows, macOS]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.0
         with:
           name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/builds/
+          path: ${{ github.workspace }}/builds
 
       # - name: create release
       #   uses: ncipollo/release-action@v1.14.0
