@@ -57,4 +57,4 @@ offset_top = 217.0
 offset_right = 692.5
 offset_bottom = 435.0
 
-[node name="MetricsTracker" parent="." instance=ExtResource("6_yrvid")]
+[node name="MetricsTracker" parent="." groups=["MetricsTracker"] instance=ExtResource("6_yrvid")]

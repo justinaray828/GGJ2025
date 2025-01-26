@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 PlayerSingleton="*res://PlayerStuff/PlayerSingleton.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="GGJ2025"
@@ -27,6 +32,7 @@ project/assembly_name="GGJ2025"
 
 MainCharacterController="This is the main reference to the player position"
 Enemy=""
+MetricsTracker=""
 
 [input]
 
