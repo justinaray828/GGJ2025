@@ -414,47 +414,61 @@ damsound8 = ExtResource("17_050v1")
 [node name="AttackBubbleHolder" type="Node2D" parent="."]
 
 [node name="death_canvas" type="CanvasLayer" parent="."]
+visible = false
 offset = Vector2(500, 300)
 transform = Transform2D(1, 0, 0, 1, 500, 300)
 
-[node name="death_container" type="Container" parent="death_canvas"]
-visible = false
-offset_left = -396.0
-offset_top = -203.0
-offset_right = -356.0
-offset_bottom = -163.0
+[node name="MarginContainer" type="MarginContainer" parent="death_canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -301.0
+offset_right = -500.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 290
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 290
+theme_override_constants/margin_bottom = 90
 
-[node name="MarginContainer" type="MarginContainer" parent="death_canvas/death_container"]
+[node name="ColorRect" type="ColorRect" parent="death_canvas/MarginContainer"]
 layout_mode = 2
+color = Color(0.164706, 0.227451, 0.172549, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="death_canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -301.0
+offset_right = -500.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 100
 
-[node name="MarginContainer3" type="MarginContainer" parent="death_canvas/death_container"]
-layout_mode = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 100
-
-[node name="ColorRect" type="ColorRect" parent="death_canvas/death_container/MarginContainer3"]
+[node name="ColorRect" type="ColorRect" parent="death_canvas/MarginContainer2"]
 layout_mode = 2
 color = Color(0.317647, 0.415686, 0.329412, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="death_canvas/death_container/MarginContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="death_canvas/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="death_canvas/death_container/MarginContainer3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="death_canvas/MarginContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("23_ttos1")
 theme_override_font_sizes/font_size = 50
@@ -462,52 +476,49 @@ text = "You got popped!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "You stayed alive for:"
 
-[node name="time_alive" type="Label" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="time_alive" type="Label" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "00:00:00"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Demons Banished:"
 
-[node name="demons_banished" type="Label" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="demons_banished" type="Label" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "0000"
 
-[node name="Restart Button" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
-process_mode = 3
+[node name="Restart Button" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("23_ttos1")
 text = "Restart"
 quit = false
 game_scene = true
 
-[node name="Main Menu Button" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
-process_mode = 3
+[node name="Main Menu Button" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("23_ttos1")
 text = "Main Menu"
 quit = false
 main_menu = true
 
-[node name="Quit" parent="death_canvas/death_container/MarginContainer3/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
-process_mode = 3
+[node name="Quit" parent="death_canvas/MarginContainer2/MarginContainer/VBoxContainer" instance=ExtResource("23_705r7")]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("23_ttos1")
 text = "Quit"
@@ -516,13 +527,15 @@ text = "Quit"
 visible = false
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.317647, 0.415686, 0.329412, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -498.0
-offset_top = -294.0
-offset_right = -498.0
-offset_bottom = -294.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -978.0
+offset_top = -568.0
+offset_right = -1.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -531,7 +544,6 @@ script = ExtResource("10_le3mg")
 gameendlabel = NodePath("GameEndTextLabel")
 
 [node name="GameEndTextLabel" type="RichTextLabel" parent="death_canvas/GameEndNode"]
-visible = false
 layout_mode = 0
 offset_left = 50.0
 offset_top = 53.0
@@ -549,7 +561,6 @@ text = "After"
 
 [node name="Gobacktomainmenu" type="Button" parent="death_canvas/GameEndNode"]
 process_mode = 3
-visible = false
 layout_mode = 0
 offset_left = 22.0
 offset_top = 450.0
@@ -561,7 +572,6 @@ text = "Main Menu"
 
 [node name="Restart" type="Button" parent="death_canvas/GameEndNode"]
 process_mode = 3
-visible = false
 layout_mode = 0
 offset_left = 564.0
 offset_top = 450.0
