@@ -5,6 +5,8 @@ class_name Enemy
 @onready var animation_player = $AnimationPlayer
 @onready var attack_area = $AttackArea
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var weapon_animation_player = $Weapon/WeaponAnimationPlayer
+@onready var weapon_sprite_2d = $Weapon/WeaponSprite2D
 
 @export var speed: float = 150.0
 @export var attack_cooldown: float = 2
@@ -18,9 +20,11 @@ var can_attack: bool = true
 var player_in_range: bool = false
 var metrics_tracker: MetricsTracker
 var upgrade_menu: UpgradeMenu
+var facing_right: bool = true
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
+	metrics_tracker.enemies_alive += 1
 
 func _process(delta):
 	if can_attack && player_in_range:
@@ -29,8 +33,12 @@ func _process(delta):
 func _physics_process(delta):
 	if velocity.x > 0:
 		animated_sprite_2d.flip_h = false
+		weapon_sprite_2d.flip_h = false
+		facing_right = true
 	else:
 		animated_sprite_2d.flip_h = true
+		weapon_sprite_2d.flip_h = true
+		facing_right = false
 	
 	if base_player:
 		player = base_player.get_node("MainPlayerController")
@@ -65,9 +73,16 @@ func attack():
 		projectile_instance.damage = damage
 		projectile_instance.global_position = global_position
 		projectile_instance.global_transform = attack_area.global_transform
+		var projectile_sprite = projectile_instance.find_child("Sprite2D")
+		if projectile_sprite:
+				projectile_instance.look_at(player.global_position)
 		get_tree().current_scene.add_child(projectile_instance)
 	else:
 		print("Melee Attack!")
+		if facing_right:
+			weapon_animation_player.play("stab")
+		else:
+			weapon_animation_player.play("stab_left")
 		PlayerSingleton.runTakeDamageLogic(damage)
 	
 	
@@ -86,5 +101,5 @@ func takeDamage(damage: int):
 func die():
 	if metrics_tracker:
 		metrics_tracker.kill_count += 1
-	#upgrade_menu.unhide()
+	metrics_tracker.enemies_alive -= 1
 	queue_free()

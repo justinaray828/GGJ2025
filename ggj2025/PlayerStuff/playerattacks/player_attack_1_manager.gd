@@ -27,6 +27,7 @@ func _on_attack_1_timer_timeout() -> void:
 		myattack.damage = PlayerSingleton.baseattack1damage
 		myattack.transform = get_parent().global_transform
 		myattack.myhealth = PlayerSingleton.baseattack1health
+		myattack.look_at(get_global_mouse_position())
 		var randomx = randf_range(0,30)
 		var randomy = randf_range(0,30)
 		myattack.position += Vector2(randomx, randomy)

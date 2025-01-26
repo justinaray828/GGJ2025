@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=41 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
 [ext_resource type="Texture2D" uid="uid://c14cou8vmm4jt" path="res://PlayerStuff/playerart/Player_Sprite.png" id="2_scu8u"]
 [ext_resource type="Texture2D" uid="uid://b6me2de38kry2" path="res://PlayerStuff/playerart/Player_bubble_2.png" id="3_5pbwf"]
+[ext_resource type="Texture2D" uid="uid://d3mbd7wbr2adt" path="res://PlayerStuff/playerart/PLAYER_Side_view.png" id="3_nqvkn"]
 [ext_resource type="PackedScene" uid="uid://bedxfvlvk6d1u" path="res://PlayerStuff/playerattacks/attack_1_bubble.tscn" id="3_rcuxm"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_2_manager.gd" id="4_5klts"]
 [ext_resource type="Texture2D" uid="uid://vpi0x3gdpted" path="res://PlayerStuff/playerart/New_Player_sprite3.png" id="4_f6f4l"]
@@ -18,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://dva30x8w0qv1i" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_06 v1.0.wav" id="15_r3l4o"]
 [ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
 [ext_resource type="AudioStream" uid="uid://335bgqe4sr7e" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_08 v1.0.wav" id="17_050v1"]
+[ext_resource type="Script" path="res://Scripts/crosshair.gd" id="19_e5nus"]
+[ext_resource type="PackedScene" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
 radius = 30.0
@@ -33,6 +36,22 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlgnj"]
 atlas = ExtResource("2_scu8u")
 region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8beak"]
+atlas = ExtResource("3_nqvkn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g6v2"]
+atlas = ExtResource("3_nqvkn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj8xs"]
+atlas = ExtResource("3_nqvkn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67ihq"]
+atlas = ExtResource("3_nqvkn")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bilf7"]
 atlas = ExtResource("3_5pbwf")
@@ -72,6 +91,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8beak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g6v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj8xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67ihq")
+}],
+"loop": true,
+"name": &"sideview",
 "speed": 5.0
 }, {
 "frames": [{
@@ -292,21 +328,21 @@ _data = {
 
 [node name="BasePlayer" type="Node2D"]
 
-[node name="MainPlayerController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("takedamagesound", "myanimator") groups=["MainCharacterController"]]
+[node name="MainPlayerController" type="CharacterBody2D" parent="." node_paths=PackedStringArray("takedamagesound", "myanimator", "mysprite") groups=["MainCharacterController"]]
 script = ExtResource("1_kadh1")
 takedamagesound = NodePath("playertakedamagesound")
 myanimator = NodePath("PlayerBonusAnimator")
+mysprite = NodePath("MainPlayerSprite")
 
 [node name="PlayerCollisionBox" type="CollisionShape2D" parent="MainPlayerController"]
 shape = SubResource("CircleShape2D_cki36")
 
 [node name="MainPlayerSprite" type="AnimatedSprite2D" parent="MainPlayerController"]
-rotation = 0.797615
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kr3ba")
-animation = &"type3"
-autoplay = "type3"
-frame_progress = 0.992923
+animation = &"sideview"
+autoplay = "sideview"
+frame_progress = 0.984717
 
 [node name="PlayerAttack1Manager" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("attack1attacktimer")]
 script = ExtResource("2_3xlrt")
@@ -339,6 +375,18 @@ libraries = {
 current = true
 
 [node name="Node" type="Node" parent="MainPlayerController/Camera2D"]
+
+[node name="HealthBar" parent="MainPlayerController/Camera2D" instance=ExtResource("20_h78hc")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = -0.553
+anchor_top = -0.622
+anchor_right = 0.062
+anchor_bottom = 0.027
+offset_left = -549.0
+offset_top = -291.0
+offset_right = -458.0
+offset_bottom = -291.0
 
 [node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
 script = ExtResource("9_tvjvi")
@@ -376,7 +424,7 @@ offset_bottom = 497.0
 bbcode_enabled = true
 text = "After"
 
-[node name="Button" type="Button" parent="CanvasLayer/GameEndNode"]
+[node name="Gobacktomainmenu" type="Button" parent="CanvasLayer/GameEndNode"]
 process_mode = 3
 layout_mode = 0
 offset_left = 336.0
@@ -385,5 +433,8 @@ offset_right = 523.0
 offset_bottom = 441.0
 scale = Vector2(1.82138, 2.3577)
 text = "Go back to main menu!"
+
+[node name="Crosshair" type="Node" parent="."]
+script = ExtResource("19_e5nus")
 
 [connection signal="timeout" from="MainPlayerController/PlayerAttack1Manager/Attack1Timer" to="MainPlayerController/PlayerAttack1Manager" method="_on_attack_1_timer_timeout"]

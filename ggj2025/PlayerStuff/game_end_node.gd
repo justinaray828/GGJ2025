@@ -22,7 +22,7 @@ func updateTheText():
 	#time_played = get_tree().get_first_node_in_group("MetricsTracker") 
 	gameendlabel.text = "The bubble has popped! Oh no! He's doomed! \n"
 	gameendlabel.text += "Just kidding. Now that he's in his gaseous form, he's even more powerful. \n"
-	gameendlabel.text += "With his bubble blast -  all enemies dissapear. While he's at it, he goes to the kingdom and saves them - but that's a story for another day. \n"
+	gameendlabel.text += "With his bubble blast -  all enemies disappear. While he's at it, he goes to the kingdom and saves them - but that's a story for another day. \n"
 	
 	
 	gameendlabel.text += "\n You have slain: [b]" + str(kill_count) + "[/b] Enemies. Congratualations!"
