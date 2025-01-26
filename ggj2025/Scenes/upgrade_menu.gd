@@ -7,7 +7,9 @@ var upgrades: Dictionary = {
 	3: "Bubble Bullet Damage",
 	4: "Bubble Bomb Size",
 	5: "Bubble Bullet Size",
-	6: "Bubble Bullet Speed"
+	6: "Bubble Bullet Speed",
+	7: "Bubble Bullet Spread",
+	8: "Bubble Bullet Penetration"
 	}
 	
 var upgrade_1: String
