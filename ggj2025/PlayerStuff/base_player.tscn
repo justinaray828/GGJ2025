@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://PlayerStuff/pop_nearbybubbles.gd" id="10_cku3f"]
 [ext_resource type="Script" path="res://PlayerStuff/game_end_node.gd" id="10_le3mg"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
-[ext_resource type="PackedScene" uid="uid://b6r1gvx0oupat" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
+[ext_resource type="PackedScene" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
 [ext_resource type="AudioStream" uid="uid://335bgqe4sr7e" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_08 v1.0.wav" id="17_050v1"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="19_e5nus"]
-[ext_resource type="PackedScene" uid="uid://5iyywq830o8b" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
+[ext_resource type="PackedScene" uid="uid://daj6rccanco1q" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
 radius = 30.0
@@ -379,6 +379,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="MainPlayerController"]
+zoom = Vector2(0.65, 0.65)
 
 [node name="PlayerAudioListener" type="AudioListener2D" parent="MainPlayerController/Camera2D"]
 current = true
@@ -392,10 +393,10 @@ anchor_left = -0.553
 anchor_top = -0.622
 anchor_right = 0.062
 anchor_bottom = 0.027
-offset_left = -549.0
-offset_top = -291.0
-offset_right = -458.0
-offset_bottom = -291.0
+offset_left = -836.0
+offset_top = -457.0
+offset_right = -670.0
+offset_bottom = -457.0
 
 [node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
 volume_db = 15.0
