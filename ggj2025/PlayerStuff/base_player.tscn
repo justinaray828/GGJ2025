@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=43 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://vpi0x3gdpted" path="res://PlayerStuff/playerart/New_Player_sprite3.png" id="4_f6f4l"]
 [ext_resource type="PackedScene" uid="uid://b5p3bqyfgwwd" path="res://PlayerStuff/playerattacks/attack_2_area.tscn" id="5_ki2r5"]
 [ext_resource type="Script" path="res://PlayerStuff/playertakedamagesound.gd" id="9_tvjvi"]
+[ext_resource type="Script" path="res://PlayerStuff/pop_nearbybubbles.gd" id="10_cku3f"]
 [ext_resource type="Script" path="res://PlayerStuff/game_end_node.gd" id="10_le3mg"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
+[ext_resource type="PackedScene" uid="uid://b6r1gvx0oupat" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
@@ -20,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
 [ext_resource type="AudioStream" uid="uid://335bgqe4sr7e" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_08 v1.0.wav" id="17_050v1"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="19_e5nus"]
-[ext_resource type="PackedScene" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
+[ext_resource type="PackedScene" uid="uid://5iyywq830o8b" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
 radius = 30.0
@@ -364,6 +366,13 @@ wait_time = 0.1
 one_shot = true
 autostart = true
 
+[node name="PopNearbybubbles" type="Node2D" parent="MainPlayerController" node_paths=PackedStringArray("mycooldowntimer")]
+script = ExtResource("10_cku3f")
+mycooldowntimer = NodePath("PopnearbyTimer")
+Popnearbybubbles = ExtResource("11_mstbu")
+
+[node name="PopnearbyTimer" type="Timer" parent="MainPlayerController/PopNearbybubbles"]
+
 [node name="PlayerBonusAnimator" type="AnimationPlayer" parent="MainPlayerController"]
 libraries = {
 "": SubResource("AnimationLibrary_dgj5h")
@@ -428,14 +437,26 @@ text = "After"
 [node name="Gobacktomainmenu" type="Button" parent="CanvasLayer/GameEndNode"]
 process_mode = 3
 layout_mode = 0
-offset_left = 336.0
-offset_top = 410.0
-offset_right = 523.0
-offset_bottom = 441.0
+offset_left = 22.0
+offset_top = 450.0
+offset_right = 209.0
+offset_bottom = 481.0
 scale = Vector2(1.82138, 2.3577)
 text = "Go back to main menu!"
+
+[node name="Restart" type="Button" parent="CanvasLayer/GameEndNode"]
+process_mode = 3
+layout_mode = 0
+offset_left = 564.0
+offset_top = 450.0
+offset_right = 751.0
+offset_bottom = 481.0
+scale = Vector2(1.82138, 2.3577)
+text = "Play again!"
 
 [node name="Crosshair" type="Node" parent="."]
 script = ExtResource("19_e5nus")
 
 [connection signal="timeout" from="MainPlayerController/PlayerAttack1Manager/Attack1Timer" to="MainPlayerController/PlayerAttack1Manager" method="_on_attack_1_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/GameEndNode/Gobacktomainmenu" to="CanvasLayer/GameEndNode" method="_on_gobacktomainmenu_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameEndNode/Restart" to="CanvasLayer/GameEndNode" method="_on_restart_pressed"]

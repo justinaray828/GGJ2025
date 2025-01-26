@@ -8,11 +8,6 @@ var health: int = 5
 
 func _process(delta: float) -> void:
 	pass
-func _input(event: InputEvent) -> void:
-	#REMOVE THIS! THIS IS A DEBUG EVENT SO IF THE PLAYER FIRES, WE RUN THE TAKE DAMAGE STUFF 
-	if (event.is_action_pressed("fire1")):
-		runTakeDamageLogic(1)
-
 
 #Take damage function 
 func runTakeDamageLogic(damage: float): 
@@ -38,19 +33,28 @@ var baseattack1speed: float = 750
 var baseattack1health: float = 1
 #attack 2 stats 
 
+func resetAll(): 
+	health = 5
+	baseattack1timer= .7
+	baseattack1amtfired = 1
+	baseattack1damage  = 1
+	baseattack1size  = 1
+	baseattack1speed  = 750 
+	baseattack1health = 1
+
 func commitUpgrade(identifier: int):
 	print("UPDATING: THIS ONE: " + str(identifier))
 	match identifier:
-		0:
-			movement_player_reference.speed += 50
 		1:
+			movement_player_reference.speed += 50
+		2:
 			baseattack1amtfired += 1
-		2: 
+		3: 
 			baseattack1damage  += 1 
-		3:
-			baseattack1size += .3		
 		4:
-			baseattack1timer -= .15
+			baseattack1size += .3		
 		5:
+			baseattack1timer -= .15
+		6:
 			baseattack1speed += 100
 			baseattack1health +=1 

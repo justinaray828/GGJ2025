@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6r1gvx0oupat"]
+
+[ext_resource type="Script" path="res://PlayerStuff/popnearbybubbles.gd" id="1_sawhf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qxms"]
+radius = 160.0
+
+[node name="popnearbybubbles" type="Area2D" groups=["BubblePopper"]]
+script = ExtResource("1_sawhf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7qxms")
+
+[node name="ExistenceTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
