@@ -3,6 +3,8 @@ class_name Enemy
 
 @onready var attack_timer = $AttackTimer
 @onready var animation_player = $AnimationPlayer
+@onready var attack_area = $AttackArea
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 @export var speed: float = 150.0
 @export var attack_cooldown: float = 2
@@ -24,10 +26,15 @@ func _process(delta):
 		attack()
 
 func _physics_process(delta):
+	if velocity.x > 0:
+		animated_sprite_2d.flip_h = false
+	else:
+		animated_sprite_2d.flip_h = true
+	
 	if base_player:
 		player = base_player.get_node("MainPlayerController")
 		if player:
-			look_at(player.global_position)
+			attack_area.look_at(player.global_position)
 			var direction = (player.global_position - global_position).normalized()
 			velocity = direction * speed
 			move_and_slide()
@@ -56,7 +63,7 @@ func attack():
 		var projectile_instance = projectile.instantiate()
 		projectile_instance.damage = damage
 		projectile_instance.global_position = global_position
-		projectile_instance.global_transform = global_transform
+		projectile_instance.global_transform = attack_area.global_transform
 		get_tree().current_scene.add_child(projectile_instance)
 	else:
 		print("Melee Attack!")
