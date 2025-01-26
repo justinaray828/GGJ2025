@@ -4,6 +4,7 @@ var speed = 400  # move speed in pixels/sec
 @export var takedamagesound: AudioStreamPlayer2D = null
 @export var myanimator: AnimationPlayer = null
 @export var mysprite: AnimatedSprite2D = null
+@onready var health_bar: HBoxContainer = %HealthBar
 
 func _physics_process(delta):
 	#look_at(get_global_mouse_position())
@@ -24,6 +25,7 @@ func _physics_process(delta):
 func PlayerDamageChanges(): 
 	myanimator.play("playertakedamage")
 	takedamagesound.DamageSound()
+	health_bar.update_heart_display()
 	#TODO add function for looking at thealth and scaling player 
 
 func PlayerDeath():
