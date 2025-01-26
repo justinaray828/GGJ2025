@@ -1,5 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dxhfs1fww6xli"]
-
+[gd_scene load_steps=46 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
@@ -14,7 +13,7 @@
 [ext_resource type="Script" path="res://PlayerStuff/pop_nearbybubbles.gd" id="10_cku3f"]
 [ext_resource type="Script" path="res://PlayerStuff/game_end_node.gd" id="10_le3mg"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
-[ext_resource type="PackedScene" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
+[ext_resource type="PackedScene" uid="uid://b6r1gvx0oupat" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
@@ -24,10 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
 [ext_resource type="AudioStream" uid="uid://335bgqe4sr7e" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_08 v1.0.wav" id="17_050v1"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="19_e5nus"]
-[ext_resource type="PackedScene" uid="uid://5iyywq830o8b" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
+[ext_resource type="PackedScene" uid="uid://daj6rccanco1q" path="res://Scenes/health_bar.tscn" id="20_h78hc"]
 [ext_resource type="PackedScene" uid="uid://3r5agnoea7hg" path="res://Scenes/scene_change.tscn" id="23_705r7"]
 [ext_resource type="FontFile" uid="uid://bdshdx1gxe8dw" path="res://Assets/Fonts/minecraft/Minecraft.ttf" id="23_ttos1"]
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cki36"]
 radius = 30.0

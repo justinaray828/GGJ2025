@@ -115,7 +115,11 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Mouse Click - Bubble Bomb"
+text = "Mouse Left Click - Place Bubble Bomb"
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Mouse Right Click - Explode Bubble Bomb"
 
 [node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -132,3 +136,25 @@ autoplay = true
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 color = Color(0.16587, 0.227306, 0.173362, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 16.0
+offset_right = 656.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.353353, 0.432062, 0.323184, 1)
+theme_override_fonts/font = ExtResource("3_t43r3")
+theme_override_font_sizes/font_size = 71
+text = "Bathroom Breach:"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 86.0
+offset_right = 656.0
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(0.353353, 0.432062, 0.323184, 1)
+theme_override_fonts/font = ExtResource("3_t43r3")
+theme_override_font_sizes/font_size = 40
+text = "Attack of the Germ Goblins"
