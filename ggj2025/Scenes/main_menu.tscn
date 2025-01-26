@@ -90,6 +90,8 @@ alignment = 1
 
 [node name="Play" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_l17s3")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Master")
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_fonts/font = ExtResource("3_t43r3")
 text = "Play"
 quit = false
@@ -97,6 +99,8 @@ game_scene = true
 
 [node name="Quit" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_l17s3")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Master")
 theme_override_fonts/font = ExtResource("3_t43r3")
 text = "Quit"
 
@@ -108,6 +112,8 @@ horizontal_alignment = 1
 
 [node name="Master" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_i82ty")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Play")
 bus_name = "Master"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
