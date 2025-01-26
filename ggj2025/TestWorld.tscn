@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=4 uid="uid://bry0hideui0iv"]
+[gd_scene load_steps=23 format=4 uid="uid://bry0hideui0iv"]
 
 [ext_resource type="PackedScene" uid="uid://dxhfs1fww6xli" path="res://PlayerStuff/base_player.tscn" id="1_v45iu"]
-[ext_resource type="PackedScene" uid="uid://dp4p7mh2a7uoy" path="res://EnemyStuff/enemy.tscn" id="2_wq8j1"]
 [ext_resource type="PackedScene" uid="uid://diedbeufg01k6" path="res://SpawnerStuff/spawner.tscn" id="3_5n78j"]
 [ext_resource type="PackedScene" uid="uid://forjtqcjpwg6" path="res://Scenes/pause_menu.tscn" id="4_br7wv"]
 [ext_resource type="Texture2D" uid="uid://dbifn4m0whwwi" path="res://PlayerStuff/playerart/tile_floor_3.png" id="4_tmbxl"]
 [ext_resource type="Script" path="res://SpawnerStuff/spawner.gd" id="6_hrlv0"]
 [ext_resource type="PackedScene" uid="uid://cult8cpu1m1l6" path="res://Metrics/metrics_tracker.tscn" id="6_yrvid"]
+[ext_resource type="PackedScene" uid="uid://gbc6vcwa0fy3" path="res://EnemyStuff/enemy_ranged_light.tscn" id="7_e4et2"]
 [ext_resource type="PackedScene" uid="uid://dinqlk7ui21qo" path="res://Scenes/upgrade_menu.tscn" id="7_xe6gn"]
 [ext_resource type="AudioStream" uid="uid://rjtrp0qhafnn" path="res://Assets/musictracks/music_layer_01 v1.0 loop.ogg" id="8_e7jkc"]
+[ext_resource type="PackedScene" uid="uid://btaviye1r5w8r" path="res://EnemyStuff/enemy_melee_heavy.tscn" id="8_ovi1s"]
 [ext_resource type="Script" path="res://music_holder.gd" id="8_vtuf3"]
-[ext_resource type="PackedScene" uid="uid://cyjseua18tmq7" path="res://EnemyStuff/enemy_melee_light.tscn" id="9_5t3o1"]
+[ext_resource type="PackedScene" uid="uid://ylq2440584fh" path="res://EnemyStuff/enemy_melee_light.tscn" id="9_5t3o1"]
 [ext_resource type="AudioStream" uid="uid://b7cdf1m0s75gh" path="res://Assets/musictracks/music_layer_02 v1.0 loop.ogg" id="9_btohy"]
 [ext_resource type="AudioStream" uid="uid://b6bib7daak7tn" path="res://Assets/musictracks/music_layer_03 v1.1 loop.ogg" id="10_j0cpl"]
 [ext_resource type="AudioStream" uid="uid://dao38l5cn254u" path="res://Assets/musictracks/music_layer_04 v1.0 loop.ogg" id="11_50gjf"]
@@ -43,6 +44,15 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/3 = SubResource("TileSetAtlasSource_0kvor")
 
+[sub_resource type="Gradient" id="Gradient_kq5g8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ta658"]
+gradient = SubResource("Gradient_kq5g8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57yaa"]
+size = Vector2(3839.94, 18388)
+
 [node name="TestWorld" type="Node2D"]
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
@@ -60,14 +70,24 @@ tile_set = SubResource("TileSet_um0ov")
 script = ExtResource("6_hrlv0")
 
 [node name="Spawner" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
-position = Vector2(590, 321)
-node_to_spawn = ExtResource("2_wq8j1")
+spawn_area = Rect2(-4000, -4000, 4000, 4000)
+spawn_interval = 1.0
+node_to_spawn = ExtResource("9_5t3o1")
 base_player = NodePath("../../BasePlayer")
 metrics_tracker = NodePath("../../MetricsTracker")
 upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
 
 [node name="Spawner2" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
-node_to_spawn = ExtResource("9_5t3o1")
+spawn_area = Rect2(-4000, -4000, 4000, 4000)
+spawn_interval = 1.0
+node_to_spawn = ExtResource("7_e4et2")
+base_player = NodePath("../../BasePlayer")
+metrics_tracker = NodePath("../../MetricsTracker")
+upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
+
+[node name="Spawner3" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
+spawn_area = Rect2(-4000, -4000, 4000, 4000)
+node_to_spawn = ExtResource("8_ovi1s")
 base_player = NodePath("../../BasePlayer")
 metrics_tracker = NodePath("../../MetricsTracker")
 upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
@@ -124,3 +144,49 @@ stream = ExtResource("12_bf2q7")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="Walls (These don\'t work)" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls (These don\'t work)"]
+position = Vector2(-5322, -144)
+scale = Vector2(10.082, 14596)
+texture = SubResource("GradientTexture1D_ta658")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Walls (These don\'t work)"]
+position = Vector2(5911, -135)
+scale = Vector2(10.082, 14596)
+texture = SubResource("GradientTexture1D_ta658")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Walls (These don\'t work)"]
+position = Vector2(582.998, -6217)
+rotation = 1.5708
+scale = Vector2(10.082, 14596)
+texture = SubResource("GradientTexture1D_ta658")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Walls (These don\'t work)"]
+position = Vector2(798, 6000)
+rotation = 1.5708
+scale = Vector2(10.082, 14596)
+texture = SubResource("GradientTexture1D_ta658")
+
+[node name="Area2D" type="Area2D" parent="Walls (These don\'t work)"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls (These don\'t work)/Area2D"]
+position = Vector2(-5944.94, 506)
+shape = SubResource("RectangleShape2D_57yaa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls (These don\'t work)/Area2D"]
+position = Vector2(6529.88, 314)
+shape = SubResource("RectangleShape2D_57yaa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls (These don\'t work)/Area2D"]
+position = Vector2(-169, -6847.97)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_57yaa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls (These don\'t work)/Area2D"]
+position = Vector2(838, 6632.75)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_57yaa")

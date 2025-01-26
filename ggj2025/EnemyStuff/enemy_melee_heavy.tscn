@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp4p7mh2a7uoy"]
+[gd_scene load_steps=13 format=3 uid="uid://btaviye1r5w8r"]
 
-[ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_4gnrm"]
-[ext_resource type="Texture2D" uid="uid://py67wjdghbov" path="res://EnemyStuff/Assets/goblin_sprite_sheet.png" id="3_yo3dd"]
+[ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_5uj3v"]
+[ext_resource type="Texture2D" uid="uid://py67wjdghbov" path="res://EnemyStuff/Assets/goblin_sprite_sheet.png" id="2_cgdr1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
 radius = 31.0644
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7y6m3"]
-radius = 214.002
+radius = 38.833
 
 [sub_resource type="Animation" id="Animation_b7spr"]
 length = 0.001
@@ -47,19 +47,19 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5rmt"]
-atlas = ExtResource("3_yo3dd")
+atlas = ExtResource("2_cgdr1")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_645pn"]
-atlas = ExtResource("3_yo3dd")
+atlas = ExtResource("2_cgdr1")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlbne"]
-atlas = ExtResource("3_yo3dd")
+atlas = ExtResource("2_cgdr1")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ta4xo"]
-atlas = ExtResource("3_yo3dd")
+atlas = ExtResource("2_cgdr1")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqskf"]
@@ -83,10 +83,11 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_4gnrm")
-speed = 170.0
+script = ExtResource("1_5uj3v")
+speed = 130.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")

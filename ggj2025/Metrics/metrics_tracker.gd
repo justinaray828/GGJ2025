@@ -3,6 +3,7 @@ class_name MetricsTracker
 
 var time_played: float = 0.0
 var kill_count: int = 0
+var enemies_alive: int = 0
 
 func _process(delta: float) -> void:
 	# Increment time_played by the frame's delta time
