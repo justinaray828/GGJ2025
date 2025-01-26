@@ -6,7 +6,6 @@ var upgrades: Dictionary = {
 	2: "Bubble Bullet Frequency",
 	3: "Bubble Bullet Damage",
 	4: "Bubble Bomb Damage",
-	5: "Bubble Bullet Size",
 	6: "Bubble Bullet Speed",
 	7: "Bubble Bullet Spread",
 	8: "Bubble Bullet Penetration"
