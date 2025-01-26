@@ -61,6 +61,8 @@ text = "Paused"
 
 [node name="Restart Button" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Master")
+focus_neighbor_bottom = NodePath("../Main Menu Button")
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Restart"
 quit = false
@@ -68,6 +70,8 @@ game_scene = true
 
 [node name="Main Menu Button" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Restart Button")
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Main Menu"
 quit = false
@@ -75,6 +79,8 @@ main_menu = true
 
 [node name="Quit" parent="MarginContainer/Container/VBoxContainer" instance=ExtResource("1_1gki6")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Main Menu Button")
+focus_neighbor_bottom = NodePath("../Master")
 theme_override_fonts/font = ExtResource("3_mrlpb")
 text = "Quit"
 
