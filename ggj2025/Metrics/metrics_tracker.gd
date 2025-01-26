@@ -8,6 +8,7 @@ var enemies_alive: int = 0
 func _process(delta: float) -> void:
 	# Increment time_played by the frame's delta time
 	time_played += delta
+	#print(time_played)
 	#print(kill_count)
 
 func get_time_played() -> String:

@@ -111,7 +111,6 @@ offset_left = -58.0
 offset_right = 100.0
 
 [node name="MusicHolder" type="Node" parent="." node_paths=PackedStringArray("layer1reference", "layer2reference", "layer3reference", "layer4reference", "layer5reference", "metricstracker")]
-process_mode = 3
 script = ExtResource("8_vtuf3")
 layer1reference = NodePath("layer1")
 layer2reference = NodePath("layer2")
@@ -149,3 +148,6 @@ stream = ExtResource("12_bf2q7")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="HealthPickup" parent="." instance=ExtResource("18_ft77w")]
+position = Vector2(345, 174)

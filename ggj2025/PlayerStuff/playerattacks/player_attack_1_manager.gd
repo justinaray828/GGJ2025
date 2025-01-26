@@ -28,11 +28,6 @@ func _on_attack_1_timer_timeout() -> void:
 		myattack.transform = get_parent().global_transform
 		myattack.myhealth = PlayerSingleton.baseattack1health
 		myattack.look_at(get_global_mouse_position())
-		
-		if i > 0:
-			var rotation_change = 10 * ceil(i / 2) * pow(-1, i)
-			myattack.rotation += deg_to_rad(rotation_change)
-		
 		var randomx = randf_range(0,30)
 		var randomy = randf_range(0,30)
 		myattack.position += Vector2(randomx, randomy)

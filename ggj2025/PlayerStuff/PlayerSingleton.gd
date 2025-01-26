@@ -11,9 +11,6 @@ func _process(delta: float) -> void:
 
 #Take damage function 
 func runTakeDamageLogic(damage: float): 
-	if health < 1:
-		return
-	
 	if(movement_player_reference == null):
 		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
 	if movement_player_reference != null:
@@ -47,24 +44,17 @@ func resetAll():
 
 func commitUpgrade(identifier: int):
 	print("UPDATING: THIS ONE: " + str(identifier))
-	
-	if(movement_player_reference == null):
-		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
-	
 	match identifier:
 		1:
 			movement_player_reference.speed += 50
 		2:
-			baseattack1timer -= .15
+			baseattack1amtfired += 1
 		3: 
 			baseattack1damage  += 1 
 		4:
-			pass # Bubble bomb damage += 1
+			baseattack1size += .3		
 		5:
-			baseattack1size += .3
+			baseattack1timer -= .15
 		6:
 			baseattack1speed += 100
-		7:
-			baseattack1amtfired += 1
-		8:
 			baseattack1health +=1 
