@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://btaviye1r5w8r"]
+[gd_scene load_steps=18 format=3 uid="uid://btaviye1r5w8r"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_5uj3v"]
 [ext_resource type="Texture2D" uid="uid://py67wjdghbov" path="res://EnemyStuff/Assets/goblin_sprite_sheet.png" id="2_cgdr1"]
+[ext_resource type="Texture2D" uid="uid://yf71jaisv6u7" path="res://EnemyStuff/Assets/shank.png" id="3_7shcb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
 radius = 31.0644
@@ -82,12 +83,104 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_njp6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hhis4"]
+resource_name = "stab"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 9), Vector2(30, 9), Vector2(0, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e2kjc"]
+resource_name = "stab_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 9), Vector2(-30, 9), Vector2(0, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qj3vu"]
+_data = {
+"RESET": SubResource("Animation_njp6q"),
+"stab": SubResource("Animation_hhis4"),
+"stab_left": SubResource("Animation_e2kjc")
+}
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_5uj3v")
 speed = 130.0
+damage = 3.0
+health = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")
@@ -109,6 +202,19 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_fqskf")
 autoplay = "default"
 frame_progress = 0.526824
+
+[node name="Weapon" type="Node2D" parent="."]
+
+[node name="WeaponSprite2D" type="Sprite2D" parent="Weapon"]
+visible = false
+position = Vector2(0, 9)
+scale = Vector2(3, 3)
+texture = ExtResource("3_7shcb")
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+libraries = {
+"": SubResource("AnimationLibrary_qj3vu")
+}
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

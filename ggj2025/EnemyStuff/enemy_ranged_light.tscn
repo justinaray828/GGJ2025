@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://gbc6vcwa0fy3"]
+[gd_scene load_steps=18 format=3 uid="uid://gbc6vcwa0fy3"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_mijyi"]
 [ext_resource type="PackedScene" uid="uid://yc0o7ut0kww5" path="res://EnemyStuff/Projectiles/enemy_projectile.tscn" id="2_ik817"]
 [ext_resource type="Texture2D" uid="uid://bsvp8t55g8ek2" path="res://EnemyStuff/Assets/demon_walking_1.png" id="3_5slty"]
+[ext_resource type="Texture2D" uid="uid://yf71jaisv6u7" path="res://EnemyStuff/Assets/shank.png" id="4_xlqpf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
 radius = 31.0644
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7y6m3"]
-radius = 214.002
+radius = 353.0
 
 [sub_resource type="Animation" id="Animation_b7spr"]
 length = 0.001
@@ -83,6 +84,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_njp6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hhis4"]
+resource_name = "stab"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 9), Vector2(30, 9), Vector2(0, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qj3vu"]
+_data = {
+"RESET": SubResource("Animation_njp6q"),
+"stab": SubResource("Animation_hhis4")
+}
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
@@ -109,6 +171,20 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_fqskf")
 autoplay = "default"
 frame_progress = 0.0280586
+
+[node name="Weapon" type="Node2D" parent="."]
+visible = false
+
+[node name="WeaponSprite2D" type="Sprite2D" parent="Weapon"]
+visible = false
+position = Vector2(15, 9)
+scale = Vector2(3, 3)
+texture = ExtResource("4_xlqpf")
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+libraries = {
+"": SubResource("AnimationLibrary_qj3vu")
+}
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
