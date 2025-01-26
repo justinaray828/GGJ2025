@@ -20,6 +20,12 @@ func runTakeDamageLogic(damage: float):
 		if health-damage > 5:
 			return # Don't add health if it would exceed 5
 		health = health-damage
+		
+		# This is a health pickup.
+		if damage < 0:
+			movement_player_reference.PlayerHealthChanges()
+			return
+		
 		if(health>0):
 			movement_player_reference.PlayerDamageChanges()
 		elif(health <= 0):

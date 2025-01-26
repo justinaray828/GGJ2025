@@ -30,6 +30,9 @@ func PlayerDamageChanges():
 	health_bar.update_heart_display()
 	#TODO add function for looking at thealth and scaling player 
 
+func PlayerHealthChanges():
+	health_bar.update_heart_display()
+
 func PlayerDeath():
 	speed=0
 	myanimator.play("playerdeath")
