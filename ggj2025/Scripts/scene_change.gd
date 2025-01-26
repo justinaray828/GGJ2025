@@ -5,6 +5,11 @@ extends Button
 @export var game_scene: bool = false
 @export var main_menu: bool = false
 
+@onready var play: Button = $"."
+
+func _ready() -> void:
+	play.grab_focus()
+	
 func _on_pressed() -> void:
 	if quit:
 		get_tree().quit()
