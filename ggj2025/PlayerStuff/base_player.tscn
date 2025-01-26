@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://PlayerStuff/pop_nearbybubbles.gd" id="10_cku3f"]
 [ext_resource type="Script" path="res://PlayerStuff/game_end_node.gd" id="10_le3mg"]
 [ext_resource type="AudioStream" uid="uid://ccs2quat7f7v6" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_01 v1.0.wav" id="10_y6bw6"]
-[ext_resource type="PackedScene" uid="uid://b6r1gvx0oupat" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
+[ext_resource type="PackedScene" path="res://PlayerStuff/playerattacks/popnearbybubbles.tscn" id="11_mstbu"]
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]

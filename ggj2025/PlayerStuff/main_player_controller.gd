@@ -7,6 +7,9 @@ var speed = 400  # move speed in pixels/sec
 @onready var health_bar: HBoxContainer = %HealthBar
 @onready var playerdiesound: AudioStreamPlayer2D = $playerdiesound
 
+func _ready():
+	PlayerSingleton.resetAll()
+
 func _physics_process(delta):
 	#look_at(get_global_mouse_position())
 	var direction = Input.get_vector("left", "right", "up", "down")
