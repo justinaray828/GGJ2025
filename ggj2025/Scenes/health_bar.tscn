@@ -1,31 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://5iyywq830o8b"]
+[gd_scene load_steps=6 format=3 uid="uid://daj6rccanco1q"]
 
-[ext_resource type="Texture2D" uid="uid://vpi0x3gdpted" path="res://PlayerStuff/playerart/New_Player_sprite3.png" id="1_efi52"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="1_ueg51"]
+[ext_resource type="Texture2D" uid="uid://d2wocgof4o2sv" path="res://Assets/heart_sprite.png" id="2_qqod8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aohyi"]
-atlas = ExtResource("1_efi52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vadve"]
+atlas = ExtResource("2_qqod8")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c011b"]
-atlas = ExtResource("1_efi52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrii8"]
+atlas = ExtResource("2_qqod8")
 region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbk7a"]
-atlas = ExtResource("1_efi52")
-region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_35qpo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aohyi")
+"texture": SubResource("AtlasTexture_vadve")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c011b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qbk7a")
+"texture": SubResource("AtlasTexture_mrii8")
 }],
 "loop": true,
 "name": &"idle",
@@ -33,7 +26,9 @@ animations = [{
 }]
 
 [node name="HealthBar" type="HBoxContainer"]
-offset_right = 91.0
+z_index = 10
+offset_right = 166.0
+scale = Vector2(2, 2)
 script = ExtResource("1_ueg51")
 
 [node name="Health" type="TextureRect" parent="."]

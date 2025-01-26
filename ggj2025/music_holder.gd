@@ -14,6 +14,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if PlayerSingleton.health < 1:
+		layer1reference.volume_db = -80
+		layer2reference.volume_db = -80
+		layer3reference.volume_db = -80
+		layer4reference.volume_db = -80
+		layer5reference.volume_db = -80
+		return
+	else:
+		layer1reference.volume_db = -5
+	
 	if(metricstracker.time_played > 16):
 		layer2reference.volume_db = -5
 	if(metricstracker.time_played > 32):
