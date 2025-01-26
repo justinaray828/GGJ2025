@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var attack_timer = $AttackTimer
+@onready var animation_player = $AnimationPlayer
 
 @export var speed: float = 150.0
 @export var attack_cooldown: float = 2
@@ -68,6 +69,7 @@ func attack():
 	attack_timer.start()
 
 func takeDamage(damage: int):
+	animation_player.play("take_damage")
 	health -= damage
 	
 	if health <= 0:

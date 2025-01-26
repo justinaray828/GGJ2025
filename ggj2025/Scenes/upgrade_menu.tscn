@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dinqlk7ui21qo"]
+
+[ext_resource type="Script" path="res://Scenes/upgrade_menu.gd" id="1_8inra"]
+[ext_resource type="FontFile" uid="uid://bdshdx1gxe8dw" path="res://Assets/Fonts/minecraft/Minecraft.ttf" id="2_ajqqu"]
+
+[node name="upgrade_menu" type="MarginContainer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -109.0
+offset_right = 66.5
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_8inra")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.16587, 0.227306, 0.173362, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.316724, 0.415571, 0.328324, 1)
+
+[node name="Container" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Pause Label" type="Label" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ajqqu")
+theme_override_font_sizes/font_size = 31
+text = "Upgrade"
+
+[node name="choice_1" type="Button" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="choice_2" type="Button" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="choice_3" type="Button" parent="MarginContainer/Container/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="MarginContainer/Container/VBoxContainer/choice_1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="MarginContainer/Container/VBoxContainer/choice_2" to="." method="_on_choice_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Container/VBoxContainer/choice_3" to="." method="_on_choice_3_pressed"]

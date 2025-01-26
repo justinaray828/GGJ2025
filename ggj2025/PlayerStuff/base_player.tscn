@@ -307,6 +307,22 @@ tracks/2/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_kfb20"]
+resource_name = "playertakedamage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPlayerSprite:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.907543, 0, 0.210512, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgj5h"]
 _data = {
 "RESET": SubResource("Animation_qk05k"),
