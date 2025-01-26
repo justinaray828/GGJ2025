@@ -44,17 +44,24 @@ func resetAll():
 
 func commitUpgrade(identifier: int):
 	print("UPDATING: THIS ONE: " + str(identifier))
+	
+	if(movement_player_reference == null):
+		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
+	
 	match identifier:
 		1:
 			movement_player_reference.speed += 50
 		2:
-			baseattack1amtfired += 1
+			baseattack1timer -= .15
 		3: 
 			baseattack1damage  += 1 
 		4:
-			baseattack1size += .3		
+			pass
 		5:
-			baseattack1timer -= .15
+			baseattack1size += .3
 		6:
 			baseattack1speed += 100
+		7:
+			baseattack1amtfired += 1
+		8:
 			baseattack1health +=1 
