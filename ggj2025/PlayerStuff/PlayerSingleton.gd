@@ -11,6 +11,9 @@ func _process(delta: float) -> void:
 
 #Take damage function 
 func runTakeDamageLogic(damage: float): 
+	if health < 1:
+		return
+	
 	if(movement_player_reference == null):
 		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
 	if movement_player_reference != null:
