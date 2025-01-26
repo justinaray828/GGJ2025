@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8eeicd4i2tu"]
+
+[ext_resource type="Script" path="res://Pickups/upgrade_soap.gd" id="1_0a8xp"]
+[ext_resource type="Texture2D" uid="uid://b4b545lj5uymh" path="res://Pickups/Assets/soap.png" id="1_htx0v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb27d"]
+radius = 26.0768
+
+[node name="UpgradeSoap" type="Area2D"]
+script = ExtResource("1_0a8xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jb27d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_htx0v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
