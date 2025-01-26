@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var is_on: bool = true
-@export var spawn_area: Rect2 = Rect2(Vector2(-600, -600), Vector2(1200, 1200))
+@export var spawn_area: Rect2 = Rect2(Vector2(-900, -900), Vector2(1800, 1800))
 @export var spawn_interval: float = 2.0
 @export var node_to_spawn: PackedScene
 @export var base_player: Node2D # TODO: Check gamemanager for player ref instead.
@@ -49,7 +49,7 @@ func spawn_object():
 		
 		## Prevent spawns on player
 		if player:
-			if random_position.distance_to(player.global_position) < 500:
+			if random_position.distance_to(player.global_position) < 700:
 				return
 		
 		# Place the object at the random position
