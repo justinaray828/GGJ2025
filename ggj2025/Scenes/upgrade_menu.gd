@@ -3,9 +3,11 @@ class_name UpgradeMenu
 
 var upgrades: Dictionary = {
 	1: "Movement Speed",
-	2: "Bubble Frequency",
-	3: "Bubble Shotgun",
-	4: "Bubble Turret"
+	2: "Bubble Bullet Frequency",
+	3: "Bubble Bullet Damage",
+	4: "Bubble Bomb Size",
+	5: "Bubble Bullet Size",
+	6: "Bubble Bullet Speed"
 	}
 	
 var upgrade_1: String
