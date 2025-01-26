@@ -27,10 +27,10 @@ jobs:
           debugMode: "true"
           projectDir: "./ggj2025"
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/builds
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
 
       # - name: create release
       #   uses: ncipollo/release-action@v1.14.0
