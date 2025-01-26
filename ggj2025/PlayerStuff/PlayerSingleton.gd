@@ -19,7 +19,9 @@ func runTakeDamageLogic(damage: float):
 	if(movement_player_reference == null):
 		movement_player_reference = get_tree().get_first_node_in_group("MainCharacterController")
 	if movement_player_reference != null:
-		health = health-1
+		if health-damage > 5:
+			return # Don't add health if it would exceed 5
+		health = health-damage
 		if(health>0):
 			movement_player_reference.PlayerDamageChanges()
 		elif(health <= 0):

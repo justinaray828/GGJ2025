@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bry0hideui0iv"]
+[gd_scene load_steps=22 format=4 uid="uid://bry0hideui0iv"]
 
 [ext_resource type="PackedScene" uid="uid://dxhfs1fww6xli" path="res://PlayerStuff/base_player.tscn" id="1_v45iu"]
 [ext_resource type="PackedScene" uid="uid://diedbeufg01k6" path="res://SpawnerStuff/spawner.tscn" id="3_5n78j"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b6bib7daak7tn" path="res://Assets/musictracks/music_layer_03 v1.1 loop.ogg" id="10_j0cpl"]
 [ext_resource type="AudioStream" uid="uid://dao38l5cn254u" path="res://Assets/musictracks/music_layer_04 v1.0 loop.ogg" id="11_50gjf"]
 [ext_resource type="AudioStream" uid="uid://dqwef04dascqy" path="res://Assets/musictracks/music_layer_05 v1.0 loop.ogg" id="12_bf2q7"]
+[ext_resource type="PackedScene" uid="uid://cx76m88bixtha" path="res://Pickups/health_pickup.tscn" id="18_ft77w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nayjl"]
 
@@ -88,6 +89,13 @@ base_player = NodePath("../../BasePlayer")
 metrics_tracker = NodePath("../../MetricsTracker")
 upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
 
+[node name="SpawnerHealth" parent="Spawners" node_paths=PackedStringArray("base_player", "metrics_tracker", "upgrade_menu") instance=ExtResource("3_5n78j")]
+spawn_interval = 4.0
+node_to_spawn = ExtResource("18_ft77w")
+base_player = NodePath("../../BasePlayer")
+metrics_tracker = NodePath("../../MetricsTracker")
+upgrade_menu = NodePath("../../CanvasLayer/upgrade_menu")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_br7wv")]
@@ -140,3 +148,6 @@ stream = ExtResource("12_bf2q7")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="HealthPickup" parent="." instance=ExtResource("18_ft77w")]
+position = Vector2(345, 174)
