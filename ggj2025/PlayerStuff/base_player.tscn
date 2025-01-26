@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dxhfs1fww6xli"]
+[gd_scene load_steps=44 format=3 uid="uid://dxhfs1fww6xli"]
 
 [ext_resource type="Script" path="res://PlayerStuff/main_player_controller.gd" id="1_kadh1"]
 [ext_resource type="Script" path="res://PlayerStuff/playerattacks/player_attack_1_manager.gd" id="2_3xlrt"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://daqesmvcnfbtm" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_02 v1.0.wav" id="11_wvxc7"]
 [ext_resource type="AudioStream" uid="uid://gk26fjsea2ig" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_03 v1.0.wav" id="12_we4il"]
 [ext_resource type="AudioStream" uid="uid://dm6st5xx7jhyt" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_04 v1.0.wav" id="13_wqpb1"]
+[ext_resource type="AudioStream" uid="uid://de261x18u27uk" path="res://PlayerStuff/playerart/playerdeathsound/player_death v1.0.wav" id="14_gshd5"]
 [ext_resource type="AudioStream" uid="uid://ct0smf1l6gk6m" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_05 v1.0.wav" id="14_v86ey"]
 [ext_resource type="AudioStream" uid="uid://dva30x8w0qv1i" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_06 v1.0.wav" id="15_r3l4o"]
 [ext_resource type="AudioStream" uid="uid://brko2jq5t2cyd" path="res://PlayerStuff/playerart/playerhitsoundeffects/player_hit_07 v1.0.wav" id="16_kpu86"]
@@ -399,7 +400,7 @@ offset_right = -670.0
 offset_bottom = -457.0
 
 [node name="playertakedamagesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
-volume_db = 15.0
+volume_db = 10.0
 script = ExtResource("9_tvjvi")
 damsound1 = ExtResource("10_y6bw6")
 damsound2 = ExtResource("11_wvxc7")
@@ -409,6 +410,11 @@ damsound5 = ExtResource("14_v86ey")
 damsound6 = ExtResource("15_r3l4o")
 damsound7 = ExtResource("16_kpu86")
 damsound8 = ExtResource("17_050v1")
+
+[node name="playerdiesound" type="AudioStreamPlayer2D" parent="MainPlayerController"]
+process_mode = 3
+stream = ExtResource("14_gshd5")
+volume_db = 15.0
 
 [node name="AttackBubbleHolder" type="Node2D" parent="."]
 
