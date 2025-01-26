@@ -1,44 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp4p7mh2a7uoy"]
+[gd_scene load_steps=14 format=3 uid="uid://dp4p7mh2a7uoy"]
 
 [ext_resource type="Script" path="res://EnemyStuff/enemy.gd" id="1_4gnrm"]
 [ext_resource type="PackedScene" uid="uid://yc0o7ut0kww5" path="res://EnemyStuff/Projectiles/enemy_projectile.tscn" id="2_c8xt2"]
+[ext_resource type="Texture2D" uid="uid://py67wjdghbov" path="res://EnemyStuff/Assets/goblin_sprite_sheet.png" id="3_yo3dd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidd1"]
-radius = 25.02
-
-[sub_resource type="Gradient" id="Gradient_rdtxt"]
-colors = PackedColorArray(0, 0, 0, 1, 0.533333, 0.588235, 0.584314, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qb6xf"]
-gradient = SubResource("Gradient_rdtxt")
-width = 50
-height = 50
+radius = 31.0644
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7y6m3"]
 radius = 214.002
-
-[sub_resource type="Animation" id="Animation_8t4vs"]
-resource_name = "take_damage"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.166667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_b7spr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,11 +25,63 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8t4vs"]
+resource_name = "take_damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b0b03"]
 _data = {
 "RESET": SubResource("Animation_b7spr"),
 "take_damage": SubResource("Animation_8t4vs")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5rmt"]
+atlas = ExtResource("3_yo3dd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_645pn"]
+atlas = ExtResource("3_yo3dd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlbne"]
+atlas = ExtResource("3_yo3dd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta4xo"]
+atlas = ExtResource("3_yo3dd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqskf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5rmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_645pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlbne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta4xo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -62,9 +91,6 @@ projectile = ExtResource("2_c8xt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kidd1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_qb6xf")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
@@ -77,6 +103,12 @@ shape = SubResource("CircleShape2D_7y6m3")
 libraries = {
 "": SubResource("AnimationLibrary_b0b03")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_fqskf")
+autoplay = "default"
+frame_progress = 0.526824
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
