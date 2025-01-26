@@ -4,7 +4,7 @@ var movement_player_reference: CharacterBody2D = null
 
 #random number, we can change the health 
 #if this number goes to 0, pause the game, run player death anim, show score 
-var health: int = 7
+var health: int = 5
 
 func _process(delta: float) -> void:
 	pass

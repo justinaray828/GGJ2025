@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bry0hideui0iv"]
+[gd_scene load_steps=19 format=4 uid="uid://bry0hideui0iv"]
 
 [ext_resource type="PackedScene" uid="uid://dxhfs1fww6xli" path="res://PlayerStuff/base_player.tscn" id="1_v45iu"]
 [ext_resource type="PackedScene" uid="uid://dp4p7mh2a7uoy" path="res://EnemyStuff/enemy.tscn" id="2_wq8j1"]
@@ -8,7 +8,13 @@
 [ext_resource type="Script" path="res://SpawnerStuff/spawner.gd" id="6_hrlv0"]
 [ext_resource type="PackedScene" uid="uid://cult8cpu1m1l6" path="res://Metrics/metrics_tracker.tscn" id="6_yrvid"]
 [ext_resource type="PackedScene" uid="uid://dinqlk7ui21qo" path="res://Scenes/upgrade_menu.tscn" id="7_xe6gn"]
+[ext_resource type="AudioStream" uid="uid://rjtrp0qhafnn" path="res://Assets/musictracks/music_layer_01 v1.0 loop.ogg" id="8_e7jkc"]
+[ext_resource type="Script" path="res://music_holder.gd" id="8_vtuf3"]
 [ext_resource type="PackedScene" uid="uid://cyjseua18tmq7" path="res://EnemyStuff/enemy_melee_light.tscn" id="9_5t3o1"]
+[ext_resource type="AudioStream" uid="uid://b7cdf1m0s75gh" path="res://Assets/musictracks/music_layer_02 v1.0 loop.ogg" id="9_btohy"]
+[ext_resource type="AudioStream" uid="uid://b6bib7daak7tn" path="res://Assets/musictracks/music_layer_03 v1.1 loop.ogg" id="10_j0cpl"]
+[ext_resource type="AudioStream" uid="uid://dao38l5cn254u" path="res://Assets/musictracks/music_layer_04 v1.0 loop.ogg" id="11_50gjf"]
+[ext_resource type="AudioStream" uid="uid://dqwef04dascqy" path="res://Assets/musictracks/music_layer_05 v1.0 loop.ogg" id="12_bf2q7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nayjl"]
 
@@ -79,3 +85,42 @@ offset_bottom = 110.0
 visible = false
 offset_left = -58.0
 offset_right = 100.0
+
+[node name="MusicHolder" type="Node" parent="." node_paths=PackedStringArray("layer1reference", "layer2reference", "layer3reference", "layer4reference", "layer5reference", "metricstracker")]
+script = ExtResource("8_vtuf3")
+layer1reference = NodePath("layer1")
+layer2reference = NodePath("layer2")
+layer3reference = NodePath("layer3")
+layer4reference = NodePath("layer4")
+layer5reference = NodePath("layer5")
+metricstracker = NodePath("../MetricsTracker")
+
+[node name="layer1" type="AudioStreamPlayer" parent="MusicHolder"]
+stream = ExtResource("8_e7jkc")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="layer2" type="AudioStreamPlayer" parent="MusicHolder"]
+stream = ExtResource("9_btohy")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="layer3" type="AudioStreamPlayer" parent="MusicHolder"]
+stream = ExtResource("10_j0cpl")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="layer4" type="AudioStreamPlayer" parent="MusicHolder"]
+stream = ExtResource("11_50gjf")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="layer5" type="AudioStreamPlayer" parent="MusicHolder"]
+stream = ExtResource("12_bf2q7")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
